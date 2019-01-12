@@ -5,6 +5,9 @@ loggedin();
 
 page_header('Home');
 ?>
+
+<link rel="stylesheet" href="/css/style.css">
+
 <div class="row">
     <div class="col s12 l7">
         <div class="row">
