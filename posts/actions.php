@@ -22,10 +22,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                         if ($post['allow_comments']) {
                             $post_item = [
+                                'post_id' => $post['id'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
+                                'comments' => 'WORK IN PROGRESS',
                                 /*
                                     foreach comment
                                     query username $comment_username
@@ -40,10 +42,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             ];
                         } else {
                             $post_item = [
+                                'post_id' => $post['id'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
+                                'comments' => null,
                             ];
                         }
 
@@ -58,7 +62,35 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
 
             case 'like':
-                // code...
+                if (empty($_GET['post_id'])) {
+                    redirect('/home', 'Unknown Error');
+                }
+
+                $post_id = clean_data($_GET['post_id']);
+                $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
+                $post_likes = $post['likes'] + 1;
+                $post_liked_by = json_decode($post['liked_by']);
+
+                array_push($post_liked_by, $_SESSION['id']);
+
+                sql_update('posts', ['likes' => $post_likes, 'liked_by' => $post_liked_by], "id='{$post_id}'");
+                break;
+
+            case 'unlike':
+                if (empty($_GET['post_id'])) {
+                    redirect('/home', 'Unknown Error');
+                }
+
+                $post_id = clean_data($_GET['post_id']);
+                $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
+                $post_likes = $post['likes'] - 1;
+                $post_liked_by = json_decode($post['liked_by']);
+
+                if (($key = array_search($_SESSION['id'], $post_liked_by)) !== false) {
+                    unset($post_liked_by[$key]);
+                }
+
+                sql_update('posts', ['likes' => $post_likes, 'liked_by' => $post_liked_by], "id='{$post_id}'");
                 break;
 
             default:
