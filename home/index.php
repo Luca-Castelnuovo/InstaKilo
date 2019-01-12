@@ -25,6 +25,9 @@ page_header('Home');
                         </div>
                         <div class="row mb-0">
                             <ul class="collection">
+
+
+                                <!-- COMMENTS -->
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">account_circle</i> <span class="title">FirstName Last Name</span>
                                     <p class="truncate">I want to learn this kind of shot! Teach me.</p><a class="secondary-content" href="#!"><i class="material-icons blue-icon">thumb_up</i></a>
@@ -33,6 +36,8 @@ page_header('Home');
                                     <i class="material-icons circle">account_circle</i> <span class="title">FirstName Last Name</span>
                                     <p class="truncate">Nice use of white in this colour palette!!</p><a class="secondary-content" href="#!"><i class="material-icons blue-icon">thumb_up</i></a>
                                 </li>
+
+
                             </ul>
                             <form action="">
                                 <div class="row mb-0">
