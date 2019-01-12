@@ -50,7 +50,7 @@ function page_header($title = 'Unknown')
 HTML;
 }
 
-function page_footer()
+function page_footer($extra)
 {
     echo <<<HTML
             </div>
@@ -58,6 +58,7 @@ function page_footer()
         <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
         <script src="/js/init.js"></script>
 HTML;
+    echo $extra;
     alert_display();
     echo <<<HTML
     </body>

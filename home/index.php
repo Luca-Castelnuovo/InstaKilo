@@ -49,8 +49,8 @@ page_header('Home');
                                 <div class="row mb-0">
                                     <div class="col s12 m9">
                                         <div class="input-field col s12 mb-0">
-                                            <label for="comment">Comment</label>
-                                            <textarea id="comment" class="materialize-textarea counter" name="comment" data-length="200"></textarea>
+                                            <label for="form_comment">Comment</label>
+                                            <textarea id="form_comment" class="materialize-textarea counter" name="comment" data-length="200"></textarea>
                                         </div>
                                     </div>
                                     <div class="input-field col s12 m3">
@@ -87,4 +87,4 @@ page_header('Home');
         </div>
     </div>
 </div>
-<?= page_footer() ?>
+<?= page_footer('<script src="/js/home.js"></script>') ?>
