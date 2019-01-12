@@ -1,3 +1,4 @@
+/* Override MaterializeCSS */
 .input-field input:focus+label {
     color: #2962ff !important
 }
@@ -31,4 +32,10 @@
 
 .mb-0 {
     margin-bottom: 0 !important
+}
+
+
+/* Posts */
+#post_title {
+    font-weight: bold;
 }

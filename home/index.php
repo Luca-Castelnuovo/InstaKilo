@@ -11,17 +11,23 @@ page_header('Home');
 <div class="row">
     <div class="col s12 l7">
         <div class="row">
+            <!-- CREATE POST BTN -->
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large blue accent-4" href="/posts/add">
+                    <i class="large material-icons">camera</i>
+                </a>
+            </div>
 
             <!-- POST -->
             <div class="col s12">
                 <div class="card">
                     <div class="card-image"><img src="https://i.imgur.com/DshghpU.jpg"></div>
                     <div class="card-content">
-                        <p><b>INSERT CAPTION HERE</b></p>
+                        <p id="post_title">INSERT CAPTION HERE</p>
                     </div>
                     <div class="card-action">
                         <div class="row">
-                            <a href="#"><i class="material-icons blue-icon">thumb_up</i></a> 100 likes
+                            <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>"><i class="material-icons blue-icon">thumb_up</i></a> <span id="post_likes">100</span> likes
                         </div>
                         <div class="row mb-0">
                             <ul class="collection">
@@ -39,7 +45,7 @@ page_header('Home');
 
 
                             </ul>
-                            <form action="">
+                            <form action="/posts/actions" method="POST">
                                 <div class="row mb-0">
                                     <div class="col s12 m9">
                                         <div class="input-field col s12 mb-0">
@@ -48,6 +54,7 @@ page_header('Home');
                                         </div>
                                     </div>
                                     <div class="input-field col s12 m3">
+                                        <input type="hidden" name="CSRFtoken" value="<?= csrf_gen() ?>">
                                         <button class="btn waves-effect waves-light col s12 blue accent-4" name="action" type="submit">Send <i class="material-icons right">send</i></button>
                                     </div>
                                 </div>
