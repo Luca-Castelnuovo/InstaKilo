@@ -74,7 +74,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 array_push($post_liked_by, $_SESSION['id']);
 
-                sql_update('posts', ['likes' => $post_likes, 'liked_by' => $post_liked_by], "id='{$post_id}'");
+                sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
                 break;
 
             case 'unlike':
@@ -91,7 +91,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     unset($post_liked_by[$key]);
                 }
 
-                sql_update('posts', ['likes' => $post_likes, 'liked_by' => $post_liked_by], "id='{$post_id}'");
+                sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
                 break;
 
             default:
