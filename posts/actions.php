@@ -9,6 +9,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
             case 'posts':
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
+
+                var_dump($user_is_following);
+                var_dump($user_is_following_sql);
+                exit;
+
                 $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}')", false);
 
                 if ($posts->num_rows != 0) {
