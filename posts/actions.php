@@ -48,9 +48,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             ];
                         }
                     }
+
+                    echo json_encode($response);
+                } else {
+                    echo json_encode(['error' => 'no_posts']);
                 }
 
-                echo json_encode($response);
                 exit;
 
             case 'like':
