@@ -11,44 +11,47 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
                 $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}')", false);
 
-                if (in_array($_SESSION['id'], $post['liked_by'])) {
-                    $liked = true;
-                } else {
-                    $liked = false;
-                }
+                if ($posts->num_rows != 0) {
+                    while ($post = $posts->fetch_assoc()) {
+                        if (in_array($_SESSION['id'], $post['liked_by'])) {
+                            $liked = true;
+                        } else {
+                            $liked = false;
+                        }
 
-                if ($post['allow_comments']) {
-                    $response = [
-                        'post_id' => $post['id'],
-                        'img_url' => $post['img_url'],
-                        'caption' => $post['caption'],
-                        'likes' => $post['likes'],
-                        'liked' => $liked,
-                        /*
-                            foreach comment
-                            query username $comment_username
+                        if ($post['allow_comments']) {
+                            $response = [
+                                'post_id' => $post['id'],
+                                'img_url' => $post['img_url'],
+                                'caption' => $post['caption'],
+                                'likes' => $post['likes'],
+                                'liked' => $liked,
+                                /*
+                                    foreach comment
+                                    query username $comment_username
 
-                        */
-                        // 'comments' => [
-                        //     [
-                        //         'username' => $comment_username,
-                        //         'comment' => $comment['comment'],
-                        //     ]
-                        // ]
-                    ];
-                } else {
-                    $response = [
-                        'post_id' => $post['id'],
-                        'img_url' => $post['img_url'],
-                        'caption' => $post['caption'],
-                        'likes' => $post['likes'],
-                        'liked' => $liked,
-                    ];
+                                */
+                                // 'comments' => [
+                                //     [
+                                //         'username' => $comment_username,
+                                //         'comment' => $comment['comment'],
+                                //     ]
+                                // ]
+                            ];
+                        } else {
+                            $response = [
+                                'post_id' => $post['id'],
+                                'img_url' => $post['img_url'],
+                                'caption' => $post['caption'],
+                                'likes' => $post['likes'],
+                                'liked' => $liked,
+                            ];
+                        }
+                    }
                 }
 
                 echo json_encode($response);
-
-                break;
+                exit;
 
             case 'like':
                 // code...
