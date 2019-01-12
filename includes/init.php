@@ -13,8 +13,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/includes/template.php';
 require '/var/www/logs.lucacastelnuovo.nl/public_html/logs.php'; // log_action('1', 'service.test', $_SERVER["REMOTE_ADDR"], 'USER_ID', 'CLIENT_ID');
 
 $provider = new OAuth([
-    'clientID'                => $GLOBALS['config']->oauth->client_id,
-    'clientSecret'            => $GLOBALS['config']->oauth->client_secret,
+    'clientID'                => $GLOBALS['config']->client->id,
+    'clientSecret'            => $GLOBALS['config']->client->secret,
     'redirectUri'             => 'https://logs.lucacastelnuovo.nl/',
     'urlAuthorize'            => 'https://accounts.lucacastelnuovo.nl/auth/authorize',
     'urlAccessToken'          => 'https://accounts.lucacastelnuovo.nl/auth/token',
