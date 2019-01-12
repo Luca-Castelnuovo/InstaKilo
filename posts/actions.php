@@ -14,10 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
-                        var_dump($post['liked_by']);
-                        exit;
-
-                        if (in_array($_SESSION['id'], $post['liked_by'])) {
+                        if (in_array($_SESSION['id'], json_decode($post['liked_by']))) {
                             $liked = true;
                         } else {
                             $liked = false;
