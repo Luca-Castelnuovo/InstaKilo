@@ -30,7 +30,13 @@ if (isset($_GET['code'])) {
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
             $_SESSION['id'] = $user['id'];
 
-            // TODO: check if user exists in DB otherwise add to DB
+            $existing_user = sql_select('users', 'id', "user_id='{$user['id']}'", true);
+            if (empty($existing_user['id'])) {
+                sql_insert('users', [
+                    'user_id' => $user['id'],
+                    'user_name' => $user['username'],
+                ]);
+            }
 
             log_action('5', 'auth.login', $_SERVER["REMOTE_ADDR"], $user['id']);
             redirect('/home', 'You are logged in');

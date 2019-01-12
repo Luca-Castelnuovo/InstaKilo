@@ -2,9 +2,9 @@
 return (object) array(
     'database' => (object) array(
         'host' => 'localhost',
-        'user' => 'auth_db',
-        'password' => 'ePLEOJBUmqiiLo5x1GkyKWExRVhbScIa.',
-        'database' => 'auth',
+        'user' => 'instakilo_db',
+        'password' => 'SIgKxDXr3RCxVpOXyrLg6UNvHpeJesjyWS1UOiQ76sGjdsAc2YwZ4yRkT0wHTxaV.',
+        'database' => 'instakilo_db',
     ),
 
     'client' => (object) array(
