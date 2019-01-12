@@ -3,12 +3,11 @@
     "likes": 1000,
     "liked_by": [
         12,
-        34
+        19
     ],
     "comments": [
         {
             "user_id": 12,
-            "time": 21312321312,
             "comment": "You SUXXX",
             "subcomment": null
         },
@@ -19,7 +18,6 @@
             "subcomment": [
                 {
                     "user_id": 12,
-                    "time": 21312321312,
                     "comment": "You SUXXX",
                     "subcomment": null
                 }
