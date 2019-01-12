@@ -8,7 +8,7 @@ return (object) array(
     ),
 
     'client' => (object) array(
-        'id' => '0e1333b84ba5e48f4959c9400598b7d1',
-        'secret' => 'd629a49603f2f0bdd58f7752c882ad73fda17a45a37a07418efd6824ed44c905',
+        'id' => '65cd232b6d46d8c742bfd76e4a2fc7ce',
+        'secret' => '69412c74bb8f555d8bbebb895d8d3905215851acaee3bad83376cf95f91dd2d9',
     ),
 );
