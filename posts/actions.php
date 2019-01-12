@@ -12,6 +12,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}') ORDER BY date DESC", false);
 
                 if ($posts->num_rows != 0) {
+                    $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
                         if (in_array($_SESSION['id'], $post['liked_by'])) {
                             $liked = true;
@@ -20,7 +21,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         }
 
                         if ($post['allow_comments']) {
-                            $response = [
+                            $post_item = [
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
@@ -38,16 +39,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 // ]
                             ];
                         } else {
-                            $response = [
+                            $post_item = [
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
                             ];
                         }
+
+                        array_push($posts_item, $post_item);
                     }
 
-                    echo json_encode($response);
+                    echo json_encode($posts_item);
                 } else {
                     echo json_encode(['error' => 'no_posts']);
                 }
