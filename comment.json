@@ -1,5 +1,10 @@
 {
     "post_id": 1,
+    "likes": 1000,
+    "liked_by": [
+        12,
+        34
+    ],
     "comments": [
         {
             "user_id": 12,
@@ -17,7 +22,7 @@
                     "time": 21312321312,
                     "comment": "You SUXXX",
                     "subcomment": null
-                },
+                }
             ]
         }
     ]

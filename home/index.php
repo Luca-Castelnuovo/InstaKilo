@@ -21,13 +21,13 @@ page_header('Home');
             <!-- POST -->
             <div class="col s12">
                 <div class="card">
-                    <div class="card-image"><img src="https://i.imgur.com/DshghpU.jpg"></div>
+                    <div class="card-image"><img id="post_image" src="https://i.imgur.com/DshghpU.jpg"></div>
                     <div class="card-content">
-                        <p><span id="post_owner">Luca Castelnuovo</span> <span id="post_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut elit et dui ornare porttitor quis ac dui. Quisque gravida porttitor nunc eu lacinia. Etiam consectetur at lorem vel ultrices. Etiam quis vulputate ipsum, vitae ornare est. Cras ac ultrices elit. Sed eleifend tristique efficitur. Mauris sagittis hendrerit ante, ac commodo nisl feugiat sed. Vestibulum in erat elementum mi sodales lobortis.</span></p>
+                        <p><span id="post_owner"><a href="/u/ltcastelnuovo" class="black-text">Luca Castelnuovo</a></span> <span id="post_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut elit et dui ornare porttitor quis ac dui. Quisque gravida porttitor nunc eu lacinia. Etiam consectetur at lorem vel ultrices. Etiam quis vulputate ipsum, vitae ornare est. Cras ac ultrices elit. Sed eleifend tristique efficitur. Mauris sagittis hendrerit ante, ac commodo nisl feugiat sed. Vestibulum in erat elementum mi sodales lobortis.</span></p>
                     </div>
                     <div class="card-action">
                         <div class="row">
-                            <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>"><i class="material-icons blue-icon">favorite_border</i></a> <span id="post_likes">100</span> likes
+                            <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>"><i class="material-icons blue-icon" id="post_like">favorite_border</i></a><span id="post_likes">100</span> likes
                         </div>
                         <div class="row mb-0">
                             <ul class="collection">
@@ -36,11 +36,11 @@ page_header('Home');
                                 <!-- COMMENTS -->
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">account_circle</i> <span class="title">FirstName Last Name</span>
-                                    <p class="truncate">I want to learn this kind of shot! Teach me.</p><a class="secondary-content" href="#!"><i class="material-icons blue-icon">favorite</i></a>
+                                    <p class="truncate">I want to learn this kind of shot! Teach me.</p>
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">account_circle</i> <span class="title">FirstName Last Name</span>
-                                    <p class="truncate">Nice use of white in this colour palette!!</p><a class="secondary-content" href="#!"><i class="material-icons blue-icon">favorite_border</i></a>
+                                    <p class="truncate">Nice use of white in this colour palette!!</p>
                                 </li>
 
 
