@@ -27,7 +27,7 @@ page_header('Home');
                     </div>
                     <div class="card-action">
                         <div class="row mb-0 fs-24">
-                            <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>"><i class="material-icons blue-icon mr-0" id="post_like">favorite_border</i></a><span id="post_likes"><span id="post_likes_count">100</span> likes</span>
+                            <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>" class="mr-0"><i class="material-icons blue-icon" id="post_like">favorite_border</i></a><span id="post_likes"><span id="post_likes_count">100</span> likes</span>
                         </div>
                         <div class="row mb-0">
                             <ul class="collection">
