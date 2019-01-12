@@ -13,7 +13,7 @@ page_header('Home');
         <div class="row">
             <!-- CREATE POST BTN -->
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large blue accent-4" href="/posts/add">
+                <a class="btn-floating btn-large waves-effect waves-light blue accent-4" href="/posts/add">
                     <i class="large material-icons">camera_alt</i>
                 </a>
             </div>
