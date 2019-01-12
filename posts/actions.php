@@ -9,7 +9,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             case 'posts':
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
-                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}')", false);
+                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}') ORDER BY date DESC", false);
 
                 if ($posts->num_rows != 0) {
                     while ($post = $posts->fetch_assoc()) {
@@ -21,7 +21,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                         if ($post['allow_comments']) {
                             $response = [
-                                'post_id' => $post['id'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
@@ -40,7 +39,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             ];
                         } else {
                             $response = [
-                                'post_id' => $post['id'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
