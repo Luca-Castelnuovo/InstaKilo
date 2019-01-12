@@ -14,7 +14,7 @@ page_header('Home');
             <!-- CREATE POST BTN -->
             <div class="fixed-action-btn">
                 <a class="btn-floating btn-large blue accent-4" href="/posts/add">
-                    <i class="large material-icons">camera</i>
+                    <i class="large material-icons">camera_alt</i>
                 </a>
             </div>
 
