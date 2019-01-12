@@ -26,7 +26,7 @@ page_header('Home');
                         <p><span id="post_owner"><a href="/u/ltcastelnuovo" class="black-text">Luca Castelnuovo</a></span> <span id="post_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut elit et dui ornare porttitor quis ac dui. Quisque gravida porttitor nunc eu lacinia. Etiam consectetur at lorem vel ultrices. Etiam quis vulputate ipsum, vitae ornare est. Cras ac ultrices elit. Sed eleifend tristique efficitur. Mauris sagittis hendrerit ante, ac commodo nisl feugiat sed. Vestibulum in erat elementum mi sodales lobortis.</span></p>
                     </div>
                     <div class="card-action">
-                        <div class="row">
+                        <div class="row mb-0">
                             <a href="/posts/actions/?type=like&CSRFtoken=<?= csrf_gen() ?>"><i class="material-icons blue-icon" id="post_like">favorite_border</i></a><span id="post_likes">100</span> likes
                         </div>
                         <div class="row mb-0">

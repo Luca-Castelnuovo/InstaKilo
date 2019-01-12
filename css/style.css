@@ -39,3 +39,7 @@
 #post_owner {
     font-weight: bolder;
 }
+
+#post_likes {
+    font-size: 24px;
+}
