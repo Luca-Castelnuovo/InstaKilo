@@ -15,7 +15,7 @@ require '/var/www/logs.lucacastelnuovo.nl/public_html/logs.php'; // log_action('
 $provider = new OAuth([
     'clientID'                => $GLOBALS['config']->client->id,
     'clientSecret'            => $GLOBALS['config']->client->secret,
-    'redirectUri'             => 'https://logs.lucacastelnuovo.nl/',
+    'redirectUri'             => 'https://instakilo.lucacastelnuovo.nl/',
     'urlAuthorize'            => 'https://accounts.lucacastelnuovo.nl/auth/authorize',
     'urlAccessToken'          => 'https://accounts.lucacastelnuovo.nl/auth/token',
 ]);
