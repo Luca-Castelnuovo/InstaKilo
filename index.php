@@ -26,11 +26,6 @@ if (isset($_GET['code'])) {
                 $access_token->getToken()
             );
 
-            $allowed_users = json_decode(file_get_contents($GLOBALS['config']->oauth->allowed_users));
-            if (!in_array($user['username'], $allowed_users)) {
-                redirect('/?reset', 'Access Denied');
-            }
-
             $_SESSION['logged_in'] = true;
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
             $_SESSION['id'] = $user['id'];
