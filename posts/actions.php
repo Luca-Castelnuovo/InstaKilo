@@ -7,7 +7,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         switch ($_GET['type']) {
             case 'posts':
-                $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
+                $user_is_following = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following'];
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
 
                 var_dump($user_is_following);
