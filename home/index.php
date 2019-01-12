@@ -12,7 +12,7 @@ page_header('Home');
             <!-- POST -->
             <div class="col s12">
                 <div class="card">
-                    <div class="card-image"><img src="https://via.placeholder.com/150"></div>
+                    <div class="card-image"><img src="https://i.imgur.com/DshghpU.jpg"></div>
                     <div class="card-content">
                         <p><b>INSERT CAPTION HERE</b></p>
                     </div>
