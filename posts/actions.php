@@ -3,7 +3,7 @@
 // CLEAN URL: /posts/actions/CSRFtoken/ACTION/POST_ID
 
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
-loggedin();
+// loggedin();
 
 // csrf_val($_REQUEST['CSRFtoken'], '/home');
 
