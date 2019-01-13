@@ -42,16 +42,16 @@ page_header('Home');
 <script>var CSRFtoken = '<?= csrf_gen() ?>'; var auto_init = false;</script>
 
 <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
-<script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.13.js"></script>
+<script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.14.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        request('GET', `https://instakilo.lucacastelnuovo.nl/posts/actions/${CSRFtoken}/feed`, function(response) {
+        request('GET', `https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
             document.querySelector('#post_container').innerHTML = feed_render_posts(response);
             materialize_init();
         });
 
-        request('GET', `https://instakilo.lucacastelnuovo.nl/messages/actions/${CSRFtoken}`, function(response) {
+        request('GET', `https://instakilo.lucacastelnuovo.nl/messages/actions`, function(response) {
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
     });

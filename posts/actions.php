@@ -1,11 +1,9 @@
 <?php
 
-// CLEAN URL: /posts/actions/CSRFtoken/ACTION/POST_ID
+// CLEAN URL: /posts/actions/ACTION/CSRFtoken/POST_ID
 
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
-
-csrf_val($_REQUEST['CSRFtoken'], '/home');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
@@ -57,6 +55,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
 
             case 'like':
+                csrf_val($_GET['CSRFtoken'], '/home');
+
                 if (empty($_GET['post_id'])) {
                     response(false, 'post_id_empty');
                 }
@@ -78,6 +78,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'undo_like':
+                csrf_val($_GET['CSRFtoken'], '/home');
+
                 if (empty($_GET['post_id'])) {
                     response(false, 'post_id_empty');
                 }
@@ -107,6 +109,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
+        csrf_val($_POST['CSRFtoken'], '/home');
+
         // TODO: build comment input system
         break;
 

@@ -1,11 +1,7 @@
 <?php
 
-// CLEAN URL: /posts/actions/CSRFtoken
-
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
-
-csrf_val($_REQUEST['CSRFtoken'], '/home');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
@@ -32,6 +28,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
+        csrf_val($_POST['CSRFtoken'], '/home');
+
         if (empty($_POST['user_id'])) {
             response(false, 'user_id_empty');
         }
