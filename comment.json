@@ -1,32 +1,32 @@
 [
 
     {
-        "username": "ltcastelnuovo",
-        "profile_picture": "https://avatars3.githubusercontent.com/u/26206253",
-        "comment": "Nice Post",
+        "username": "username0",
+        "profile_picture": "URL",
+        "comment": "COMMENT-0",
         "subcomment": null
     },
 
     {
-        "username": "DonaldTRUMP",
-        "profile_picture": "https://avatars3.githubusercontent.com/u/26206253",
-        "comment": "We must build a WALL",
+        "username": "username1",
+        "profile_picture": "URL",
+        "comment": "COMMENT-1",
         "subcomment": [
             {
-                "username": "ltcastelnuovo",
-                "profile_picture": "https://avatars3.githubusercontent.com/u/26206253",
-                "comment": "Nice Post",
+                "username": "username2",
+                "profile_picture": "URL",
+                "comment": "COMMENT-1.1",
                 "subcomment": null
             },
             {
-                "username": "DonaldTRUMP",
-                "profile_picture": "https://avatars3.githubusercontent.com/u/26206253",
-                "comment": "We must build a WALL",
+                "username": "username1",
+                "profile_picture": "URL",
+                "comment": "COMMENT-1.2",
                 "subcomment": [
                     {
-                        "username": "ltcastelnuovo",
-                        "profile_picture": "https://avatars3.githubusercontent.com/u/26206253",
-                        "comment": "Nice Post",
+                        "username": "username2",
+                        "profile_picture": "URL",
+                        "comment": "COMMENT-1.3",
                         "subcomment": null
                     }
                 ]

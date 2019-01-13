@@ -13,7 +13,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             case 'feed':
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
-                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created', "`user_id` IN ('{$user_is_following_sql}') ORDER BY created DESC", false);
+                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created,user_id', "`user_id` IN ('{$user_is_following_sql}') ORDER BY created DESC", false);
+                $owner = sql_select('users', 'user_name', "user_id='{$posts['user_id']}'", true);
 
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
@@ -23,7 +24,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                         if ($post['allow_comments']) {
                             $post_item = [
-                                'post_id' => $post['id'],
+                                'id' => $post['id'],
+                                'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
@@ -33,7 +35,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             ];
                         } else {
                             $post_item = [
-                                'post_id' => $post['id'],
+                                'id' => $post['id'],
+                                'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
