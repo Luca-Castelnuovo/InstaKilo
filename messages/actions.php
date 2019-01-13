@@ -15,7 +15,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $message_item = [
                     'username' => $sender['user_name'],
                     'profile_picture' => $sender['profile_picture'],
-                    'body' => $messages['body'],
+                    'body' => $message['body'],
                 ];
 
                 array_push($messages_item, $message_item);
