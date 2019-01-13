@@ -5,7 +5,7 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
 
-csrf_val($_REQUEST['CSRFtoken'], '/home');
+// csrf_val($_REQUEST['CSRFtoken'], '/home');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':

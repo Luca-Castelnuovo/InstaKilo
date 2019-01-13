@@ -17,5 +17,6 @@ function render_posts(data) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    render_posts(request('GET', `/posts/actions/${CSRFtoken}/feed`));
+    console.log(request('GET', `/posts/actions/${CSRFtoken}/feed`));
+    // render_posts(request('GET', `/posts/actions/${CSRFtoken}/feed`));
 });
