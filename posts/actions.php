@@ -4,6 +4,7 @@
 
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 // loggedin();
+$_SESSION['id'] = '12';
 
 // csrf_val($_REQUEST['CSRFtoken'], '/home');
 
