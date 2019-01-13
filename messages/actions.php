@@ -10,7 +10,7 @@ $_SESSION['id'] = '12';
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        response(true, 'WIP');
+        response(false, 'WIP');
 
         $messages = sql_select('messages', 'id,bidy', "to='{$_SESSION['id']}' ORDER BY created DESC", false);
 
