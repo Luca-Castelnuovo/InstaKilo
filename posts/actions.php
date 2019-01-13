@@ -44,7 +44,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         array_push($posts_item, $post_item);
                     }
 
-                    response(true, '', $posts_item);
+                    response(true, '', ['posts' => $posts_item]);
                 } else {
                     response(false, 'no_posts');
                 }
