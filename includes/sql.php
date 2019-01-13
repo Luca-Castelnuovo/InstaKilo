@@ -48,8 +48,6 @@ function sql_select($table, $select, $where, $assoc = false) // sql_select('user
     $where = ' WHERE ' . $where;
     $query = 'SELECT ' . $select . ' FROM ' . $table . ' ' . $where;
 
-    error_log($query);
-
     // Execute query and return response
     return sql_query($query, $assoc);
 }
