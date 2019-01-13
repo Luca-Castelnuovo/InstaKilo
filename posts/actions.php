@@ -58,8 +58,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 $post_id = clean_data($_GET['post_id']);
                 $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
-                $post_likes = $post['likes'] + 1;
                 $post_liked_by = json_decode($post['liked_by']);
+
+                if (!in_array($_SESSION['id'], $post_liked_by)) {
+                    response(false, 'post_already_liked');
+                }
+
+                $post_likes = $post['likes'] + 1;
 
                 array_push($post_liked_by, $_SESSION['id']);
 
