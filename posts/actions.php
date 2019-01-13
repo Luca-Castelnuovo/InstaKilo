@@ -55,7 +55,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
 
             case 'like':
-                csrf_val($_GET['CSRFtoken'], '/home');
+                if (!csrf_val($_GET['CSRFtoken'], 'override')) {
+                    response(false, 'csrf_error', ['CSRFtoken' => csrf_gen()]);
+                }
 
                 if (empty($_GET['post_id'])) {
                     response(false, 'post_id_empty');
@@ -79,7 +81,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'undo_like':
-                csrf_val($_GET['CSRFtoken'], '/home');
+                if (!csrf_val($_GET['CSRFtoken'], 'override')) {
+                    response(false, 'csrf_error', ['CSRFtoken' => csrf_gen()]);
+                }
 
                 if (empty($_GET['post_id'])) {
                     response(false, 'post_id_empty');

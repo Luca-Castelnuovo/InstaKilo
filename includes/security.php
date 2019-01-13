@@ -47,14 +47,24 @@ function csrf_gen()
 function csrf_val($CSRFtoken, $redirect = '/')
 {
     if (!isset($_SESSION['CSRFtoken'])) {
-        redirect($redirect, 'CSRF Error');
+        if ($redirect === 'override') {
+            return false;
+        } else {
+            redirect($redirect, 'CSRF Error');
+        }
     }
 
     if (!(hash_equals($_SESSION['CSRFtoken'], $CSRFtoken))) {
-        redirect($redirect, 'CSRF Error');
+        if ($redirect === 'override') {
+            return false;
+        } else {
+            redirect($redirect, 'CSRF Error');
+        }
     } else {
         unset($_SESSION['CSRFtoken']);
     }
+
+    return true;
 }
 
 
