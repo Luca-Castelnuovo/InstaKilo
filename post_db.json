@@ -7,6 +7,7 @@
         12,
         19
     ],
+    "comments_allowed": true,
     "comments": [
         {
             "user_id": 12,
@@ -16,10 +17,10 @@
         {
             "user_id": 13,
             "time": 55312321312,
-            "comment": "Yes",
+            "comment": "Yeet that post",
             "subcomment": [
                 {
-                    "user_id": 12,
+                    "username": 12,
                     "comment": "You SUXXX",
                     "subcomment": null
                 }

@@ -29,18 +29,41 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
-                                'comments' => 'WORK IN PROGRESS',
-                                /*
-                                    foreach comment
-                                    query username $comment_username
-
-                                */
-                                // 'comments' => [
-                                //     [
-                                //         'username' => $comment_username,
-                                //         'comment' => $comment['comment'],
-                                //     ]
-                                // ]
+                                'comments_allowed' => true,
+                                'comments' => [
+                                    [
+                                        'username' => 'ltcastelnuovo',
+                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
+                                        'comment' => 'Nice Post',
+                                        'subcomment' => null
+                                    ],
+                                    [
+                                        'username' => 'DonaldTRUMP',
+                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
+                                        'comment' => 'We must build a WALL',
+                                        'subcomment' => [
+                                            [
+                                                'username' => 'ltcastelnuovo',
+                                                'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
+                                                'comment' => 'Nice Post',
+                                                'subcomment' => null
+                                            ],
+                                            [
+                                                'username' => 'DonaldTRUMP',
+                                                'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
+                                                'comment' => 'We must build a WALL',
+                                                'subcomment' => [
+                                                    [
+                                                        'username' => 'ltcastelnuovo',
+                                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
+                                                        'comment' => 'Nice Post',
+                                                        'subcomment' => null
+                                                    ],
+                                                ]
+                                            ],
+                                        ]
+                                    ],
+                                ]
                             ];
                         } else {
                             $post_item = [
@@ -49,7 +72,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
-                                'comments' => null,
+                                'comments_allowed' => false,
+                                'comments' => null
                             ];
                         }
 
