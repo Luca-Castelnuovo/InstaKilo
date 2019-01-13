@@ -14,11 +14,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
                 $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created,user_id', "`user_id` IN ('{$user_is_following_sql}') ORDER BY created DESC", false);
-                $owner = sql_select('users', 'user_name', "user_id='{$posts['user_id']}'", true);
 
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
+                        $owner = sql_select('users', 'user_name', "user_id='{$post['user_id']}'", true);
                         $liked_by = json_decode($post['liked_by']);
                         $liked = in_array($_SESSION['id'], $liked_by);
 
