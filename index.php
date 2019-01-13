@@ -35,6 +35,7 @@ if (isset($_GET['code'])) {
                 sql_insert('users', [
                     'user_id' => $user['id'],
                     'user_name' => $user['username'],
+                    'profile_picture' => $user['profile_picture']
                 ]);
             }
 

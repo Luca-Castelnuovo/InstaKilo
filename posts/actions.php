@@ -3,10 +3,9 @@
 // CLEAN URL: /posts/actions/CSRFtoken/ACTION/POST_ID
 
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
-// loggedin();
-$_SESSION['id'] = '12';
+loggedin();
 
-// csrf_val($_REQUEST['CSRFtoken'], '/home');
+csrf_val($_REQUEST['CSRFtoken'], '/home');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
