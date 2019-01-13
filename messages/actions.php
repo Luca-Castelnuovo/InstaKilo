@@ -10,7 +10,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         if ($messages->num_rows != 0) {
             $messages_item = [];
             while ($message = $messages->fetch_assoc()) {
-                $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$messages['sender_id']}'", true);
+                $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$message['sender_id']}'", true);
 
                 $message_item = [
                     'username' => $sender['user_name'],
