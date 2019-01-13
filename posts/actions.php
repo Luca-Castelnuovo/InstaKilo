@@ -1,11 +1,14 @@
 <?php
 
+// CLEAN URL: /posts/actions/CSRFtoken/ACTION/POST_ID
+
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
 
+csrf_val($_REQUEST['CSRFtoken'], '/home');
+
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        csrf_val($_GET['CSRFtoken'], '/home');
         switch ($_GET['type']) {
             case 'feed':
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
