@@ -17,11 +17,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
                         $liked_by = json_decode($post['liked_by']);
-                        if (in_array($_SESSION['id'], $liked_by)) {
-                            $liked = true;
-                        } else {
-                            $liked = false;
-                        }
+                        $liked = in_array($_SESSION['id'], $liked_by);
 
                         if ($post['allow_comments']) {
                             $post_item = [
@@ -31,40 +27,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
                                 'comments_allowed' => true,
-                                'comments' => [
-                                    [
-                                        'username' => 'ltcastelnuovo',
-                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
-                                        'comment' => 'Nice Post',
-                                        'subcomment' => null
-                                    ],
-                                    [
-                                        'username' => 'DonaldTRUMP',
-                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
-                                        'comment' => 'We must build a WALL',
-                                        'subcomment' => [
-                                            [
-                                                'username' => 'ltcastelnuovo',
-                                                'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
-                                                'comment' => 'Nice Post',
-                                                'subcomment' => null
-                                            ],
-                                            [
-                                                'username' => 'DonaldTRUMP',
-                                                'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
-                                                'comment' => 'We must build a WALL',
-                                                'subcomment' => [
-                                                    [
-                                                        'username' => 'ltcastelnuovo',
-                                                        'profile_picture' => 'https://avatars3.githubusercontent.com/u/26206253',
-                                                        'comment' => 'Nice Post',
-                                                        'subcomment' => null
-                                                    ],
-                                                ]
-                                            ],
-                                        ]
-                                    ],
-                                ]
+                                'comments' => json_decode($post['comments'], true)
                             ];
                         } else {
                             $post_item = [
