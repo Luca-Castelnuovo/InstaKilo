@@ -53,7 +53,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
             case 'like':
                 if (empty($_GET['post_id'])) {
-                    redirect('/home', 'Unknown Error');
+                    response(false, 'post_id_empty');
                 }
 
                 $post_id = clean_data($_GET['post_id']);
@@ -69,13 +69,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
             case 'unlike':
                 if (empty($_GET['post_id'])) {
-                    redirect('/home', 'Unknown Error');
+                    response(false, 'post_id_empty');
                 }
 
                 $post_id = clean_data($_GET['post_id']);
                 $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
-                $post_likes = $post['likes'] - 1;
                 $post_liked_by = json_decode($post['liked_by']);
+
+                if (!in_array($_SESSION['id'], $post_liked_by)) {
+                    response(false, 'post_not_liked');
+                }
+
+                $post_likes = $post['likes'] - 1;
 
                 if (($key = array_search($_SESSION['id'], $post_liked_by)) !== false) {
                     unset($post_liked_by[$key]);
@@ -86,7 +91,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             default:
-                redirect('/home', 'Unknown Error');
+                response(false, 'unknown_type');
                 break;
         }
         break;
@@ -96,6 +101,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     default:
-        redirect('/home', 'Unknown Error');
+        response(false, 'incorrect_method');
         break;
 }
