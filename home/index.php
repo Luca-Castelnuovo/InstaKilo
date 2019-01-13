@@ -93,4 +93,7 @@ page_header('Home');
         </div>
     </div>
 </div>
-<?= page_footer('<script src="/js/home.js"></script>') ?>
+<script>
+    var CSRFtoken = '<?= csrf_gen() ?>';
+</script>
+<?= page_footer('<script src="/js/feed.js"></script>') ?>

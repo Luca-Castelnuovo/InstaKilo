@@ -5,8 +5,7 @@ loggedin();
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        // TODO: Enable CSRF
-        // csrf_val($_GET['CSRFtoken'], '/home');
+        csrf_val($_GET['CSRFtoken'], '/home');
         switch ($_GET['type']) {
             case 'feed':
                 $user_is_following = json_decode(sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true)['following']);
