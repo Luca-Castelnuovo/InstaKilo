@@ -37,10 +37,10 @@ page_header('Home');
 </div>
 
 <?php
-
+$CSRFtoken = csrf_gen();
 $extra = <<<HTML
 <script>
-    var CSRFtoken = '{csrf_gen()}'; var auto_init = false;
+    var CSRFtoken = '{$CSRFtoken}'; var auto_init = false;
 
     document.addEventListener('DOMContentLoaded', function() {
         request('GET', `https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
