@@ -46,6 +46,8 @@
     font-weight: bolder;
 }
 
-#post_likes {
+.likes {
     font-size: 18px;
+    display: inline-flex;
+    vertical-align: middle;
 }
