@@ -44,9 +44,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         array_push($posts_item, $post_item);
                     }
 
-                    echo json_encode($posts_item);
+                    response(true, '', $posts_item);
                 } else {
-                    echo json_encode(['error' => 'no_posts']);
+                    response(false, 'no_posts');
                 }
 
                 exit;
@@ -64,6 +64,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 array_push($post_liked_by, $_SESSION['id']);
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
+                response(true, 'post_liked');
                 break;
 
             case 'unlike':
@@ -81,6 +82,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
+                response(true, 'post_unliked');
                 break;
 
             default:
