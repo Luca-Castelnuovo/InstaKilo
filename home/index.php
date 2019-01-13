@@ -56,6 +56,7 @@ page_header('Home');
         });
     });
 </script>
+<?= alert_display() ?>
 
 </body>
 
