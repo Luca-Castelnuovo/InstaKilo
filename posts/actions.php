@@ -17,8 +17,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
                         $liked_by = json_decode($post['liked_by']);
-                        var_dump(in_array($_SESSION['id'], $liked_by));
-                        exit;
                         if (in_array($_SESSION['id'], $liked_by)) {
                             $liked = true;
                         } else {
