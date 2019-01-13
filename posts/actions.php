@@ -74,7 +74,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 array_push($post_liked_by, $_SESSION['id']);
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
-                response(true, 'post_liked');
+
+                redirect('/home', 'Liked');
                 break;
 
             case 'undo_like':
@@ -99,7 +100,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
-                response(true, 'post_unliked');
+
+                redirect('/home', 'Like removed');
                 break;
 
             default:
