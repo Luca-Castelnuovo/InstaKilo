@@ -101,7 +101,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                response(false, 'Like removed', ['CSRFtoken' => csrf_gen(), 'likes' => $post_likes]);
+                response(true, 'Like removed', ['CSRFtoken' => csrf_gen(), 'likes' => $post_likes]);
                 break;
 
             default:
