@@ -102,7 +102,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        //comment
+        // TODO: build comment input system
         break;
 
     default:
