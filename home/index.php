@@ -5,9 +5,6 @@ loggedin();
 
 page_header('Home');
 ?>
-
-        <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/css/style.css" />
-
         <div class="row">
             <div class="fixed-action-btn">
                 <a class="btn-floating btn-large waves-effect waves-light blue accent-4" href="/posts/add">
@@ -39,12 +36,12 @@ page_header('Home');
     </div>
 </div>
 
-<script>var CSRFtoken = '<?= csrf_gen() ?>'; var auto_init = false;</script>
+<?php
 
-<script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
-<script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.23.js"></script>
-
+$extra = <<<HTML
 <script>
+    var CSRFtoken = '{csrf_gen()}'; var auto_init = false;
+
     document.addEventListener('DOMContentLoaded', function() {
         request('GET', `https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
             document.querySelector('#post_container').innerHTML = feed_render_posts(response);
@@ -56,8 +53,8 @@ page_header('Home');
         });
     });
 </script>
-<?= alert_display() ?>
+HTML;
 
-</body>
+page_footer($extra);
 
-</html>
+?>

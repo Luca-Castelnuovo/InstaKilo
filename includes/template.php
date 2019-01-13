@@ -25,6 +25,7 @@ function page_header($title = 'Unknown')
         <!-- Styles -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/general/css/materialize.css" />
+        <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/css/style.2.css" />
     </head>
 
     <body>
@@ -57,10 +58,10 @@ function page_footer($extra)
     echo <<<HTML
             </div>
         </div>
+        {$extra}
         <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
-        <script src="/js/init.js"></script>
+        <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.23.js"></script>
 HTML;
-    echo $extra;
     alert_display();
     echo <<<HTML
     </body>
