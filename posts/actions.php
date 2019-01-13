@@ -72,7 +72,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 response(true, 'post_liked');
                 break;
 
-            case 'unlike':
+            case 'undo_like':
                 if (empty($_GET['post_id'])) {
                     response(false, 'post_id_empty');
                 }
