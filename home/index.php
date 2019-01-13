@@ -42,7 +42,7 @@ page_header('Home');
 <script>var CSRFtoken = '<?= csrf_gen() ?>'; var auto_init = false;</script>
 
 <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
-<script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.15.js"></script>
+<script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.16.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
