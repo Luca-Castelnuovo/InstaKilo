@@ -75,7 +75,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                redirect('/home', 'Liked');
+                response(true, 'Liked', ['CSRFtoken' => csrf_gen(), 'likes' => $post_likes]);
                 break;
 
             case 'undo_like':
@@ -101,7 +101,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                redirect('/home', 'Like removed');
+                response(false, 'Like removed', ['CSRFtoken' => csrf_gen()]);
                 break;
 
             default:
