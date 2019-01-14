@@ -196,7 +196,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
         $comment_js = [
             'username' => $sender['user_name'],
-            'profile_picture' => $sender['user_name'],
+            'profile_picture' => $sender['profile_picture'],
             'body' => $comment_body,
             'user_is_owner' => true
         ];
