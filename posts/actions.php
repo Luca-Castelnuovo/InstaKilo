@@ -144,11 +144,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        // if (!csrf_val($_POST['CSRFtoken'], 'override')) {
-        //     response(false, 'csrf_error');
-        // }
-
-        response(false, 'provided_CSRF', [$_POST['CSRFtoken']]);
+        if (!csrf_val($_POST['CSRFtoken'], 'override')) {
+            response(false, 'csrf_error');
+        }
 
         $post_id = clean_data($_POST['post_id']);
         $comment_body = clean_data($_POST['comment']);
