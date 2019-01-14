@@ -28,7 +28,7 @@ page_header('Create Post');
                     Comments
                     <label>
                         Off
-                        <input type="checkbox" name="allow_comments" value="1">
+                        <input type="checkbox" name="allow_comments" value="1" checked>
                         <span class="lever"></span>
                         On
                     </label>
@@ -47,8 +47,8 @@ page_header('Create Post');
 <?php
 
 $extra = <<<HTML
-    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/init.js"></script>
     <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/lib.js"></script>
+    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/init.js"></script>
 HTML;
 
 page_footer($extra);
