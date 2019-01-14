@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'img_url' => $img_url,
         'caption' => $caption,
         'allow_comments' => $allow_comments,
-        'created' => date()
+        'created' => date("Y-m-d H:i:s")
     ]);
 
     redirect('/home', 'Posted');
