@@ -137,7 +137,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
 
-        $comments = $post['comments'];
+        $comments = json_decode($post['comments'], true);
         $comment = [
             'username' => $sender['user_name'],
             'profile_picture' => $sender['profile_picture'],
