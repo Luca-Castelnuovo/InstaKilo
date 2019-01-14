@@ -128,7 +128,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // }
 
         $post_id = clean_data($_POST['post_id']);
-        $comment = clean_data($_POST['comment']);
+        $comment_body = clean_data($_POST['comment']);
 
         $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
         if (empty($post['id'])) {
@@ -139,20 +139,49 @@ switch ($_SERVER['REQUEST_METHOD']) {
             response(false, 'comments_not_allowed');
         }
 
-        $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
-
         $comments = json_decode($post['comments'], true);
+
         $comment = [
-            'username' => $sender['user_name'],
-            'profile_picture' => $sender['profile_picture'],
-            'body' => $comment
+            'user_id' => $_SESSION['id'],
+            'body' => $comment_body
         ];
 
         array_push($comments, $comment);
 
         sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
 
-        response(true, 'comment_sent', ['comments' => $comments, 'new_comment' => $comment]);
+        // Get new comments
+        $updated_post = sql_select('posts', 'comments', "id='{$post_id}'", false);
+        $comments_item = [];
+        foreach ($comment = $updated_post['comments']) {
+            $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
+
+            if ($owner['id'] == $_SESSION['ide']) {
+                $user_is_owner = true;
+            } else {
+                $user_is_owner = false;
+            }
+
+            $comment_item = [
+                'username' => $owner['user_name'],
+                'profile_picture' => $owner['profile_picture'],
+                'body' => $comment['body'],
+                'user_is_owner' => $user_is_owner
+            ];
+
+            array_push($comments_item, $comment_item);
+        }
+
+        // New comment
+        $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
+        $comment_js = [
+            'username' => $sender['user_name'],
+            'profile_picture' => $sender['user_name'],
+            'body' => $comment_body,
+            'user_is_owner' => true
+        ];
+
+        response(true, 'comment_sent', ['comments' => $comments_item, 'new_comment' => $comment_js]);
         break;
 
     default:
