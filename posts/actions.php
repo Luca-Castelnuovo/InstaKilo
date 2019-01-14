@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                         if ($post['allow_comments']) {
                             $comments_item = [];
-                            foreach ($comment as $post['comments']) {
+                            foreach ($comment as json_decode($post['comments'], true)) {
                                 $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
 
                                 if ($owner['id'] == $_SESSION['ide']) {
@@ -173,7 +173,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // Get new comments
         $updated_post = sql_select('posts', 'comments', "id='{$post_id}'", true);
         $comments_item = [];
-        foreach ($comment as $updated_post['comments']) {
+        foreach ($comment as json_decode($updated_post['comments'], true)) {
             $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
 
             if ($owner['id'] == $_SESSION['ide']) {
