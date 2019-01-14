@@ -160,6 +160,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         $comments = json_decode($post['comments'], true);
+        if (!is_array($comments)) {
+            $comments = [];
+        }
 
         $comment = [
             'user_id' => $_SESSION['id'],
