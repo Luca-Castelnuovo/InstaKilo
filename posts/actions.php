@@ -130,12 +130,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $post_id = clean_data($_POST['post_id']);
         $comment = clean_data($_POST['comment']);
 
-        $post = sql_select('posts', 'id,comments,comments_allowed', "id='{$post_id}'", true);
+        $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
         if (empty($post['id'])) {
             response(false, 'post_not_found');
         }
 
-        if (!empty($post['comments_allowed'])) {
+        if (!empty($post['allow_comments'])) {
             response(false, 'comments_not_allowed');
         }
 
