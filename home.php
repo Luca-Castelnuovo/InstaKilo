@@ -44,11 +44,15 @@ $extra = <<<HTML
 
     document.addEventListener('DOMContentLoaded', function() {
         request('GET', `https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
+            CSRFtoken = response.CSRFtoken;
+
             document.querySelector('#post_container').innerHTML = feed_render_posts(response);
             materialize_init();
         });
 
         request('GET', `https://instakilo.lucacastelnuovo.nl/messages/actions`, function(response) {
+            CSRFtoken = response.CSRFtoken;
+
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
     });
