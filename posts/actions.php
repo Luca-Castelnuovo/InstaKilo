@@ -146,8 +146,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         array_push($comments, $comment);
 
-        response(true, 'new_comments', $comments);
-
         sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
 
         response(true, 'comment_sent', ['comments' => $comments, 'new_comment' => $comment]);
