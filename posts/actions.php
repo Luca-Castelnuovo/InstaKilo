@@ -153,7 +153,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // Get new comments
         $updated_post = sql_select('posts', 'comments', "id='{$post_id}'", false);
         $comments_item = [];
-        foreach ($comment = $updated_post['comments']) {
+        foreach ($comment as $updated_post['comments']) {
             $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
 
             if ($owner['id'] == $_SESSION['ide']) {
