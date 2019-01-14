@@ -135,7 +135,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             response(false, 'post_not_found');
         }
 
-        if (!empty($post['allow_comments'])) {
+        if (!$post['allow_comments']) {
             response(false, 'comments_not_allowed');
         }
 
