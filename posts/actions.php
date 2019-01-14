@@ -21,6 +21,26 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         $liked = in_array($_SESSION['id'], $liked_by);
 
                         if ($post['allow_comments']) {
+                            $comments_item = [];
+                            foreach ($comment as $post['comments']) {
+                                $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
+
+                                if ($owner['id'] == $_SESSION['ide']) {
+                                    $user_is_owner = true;
+                                } else {
+                                    $user_is_owner = false;
+                                }
+
+                                $comment_item = [
+                                    'username' => $owner['user_name'],
+                                    'profile_picture' => $owner['profile_picture'],
+                                    'body' => $comment['body'],
+                                    'user_is_owner' => $user_is_owner
+                                ];
+
+                                array_push($comments_item, $comment_item);
+                            }
+
                             $post_item = [
                                 'id' => $post['id'],
                                 'username' => $owner['user_name'],
@@ -29,7 +49,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
                                 'comments_allowed' => true,
-                                'comments' => json_decode($post['comments'], true)
+                                'comments' => $comments_item
                             ];
                         } else {
                             $post_item = [
