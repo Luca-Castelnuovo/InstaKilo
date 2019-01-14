@@ -64,10 +64,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 $post_id = clean_data($_GET['post_id']);
-                $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
+                $post = sql_select('posts', 'id,likes,liked_by', "id='{$post_id}'", true);
                 $post_liked_by = json_decode($post['liked_by']);
 
-                if (empty($post['likes'])) {
+                if (empty($post['id'])) {
                     response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
                 }
 
@@ -94,10 +94,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 $post_id = clean_data($_GET['post_id']);
-                $post = sql_select('posts', 'likes,liked_by', "id='{$post_id}'", true);
+                $post = sql_select('posts', 'id,likes,liked_by', "id='{$post_id}'", true);
                 $post_liked_by = json_decode($post['liked_by']);
 
-                if (empty($post['likes'])) {
+                if (empty($post['id'])) {
                     response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
                 }
 
@@ -130,8 +130,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $post_id = clean_data($_POST['post_id']);
         $comment = clean_data($_POST['comment']);
 
-        $post = sql_select('posts', 'comments', "id='{$post_id}'", true);
-        if (empty($post['comments'])) {
+        $post = sql_select('posts', 'id,comments', "id='{$post_id}'", true);
+        if (empty($post['id'])) {
             response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
         }
 
