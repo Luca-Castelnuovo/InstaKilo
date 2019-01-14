@@ -152,6 +152,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $post_id = clean_data($_POST['post_id']);
         $comment_body = clean_data($_POST['comment']);
 
+        if (strlen($comment_body) > 200) {
+            reponse(false, 'comment_too_long');
+        }
+
         $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
         if (empty($post['id'])) {
             response(false, 'post_not_found');
