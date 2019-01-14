@@ -52,7 +52,9 @@ page_header('Create Post');
 <?php
 
 $extra = <<<HTML
+    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/polyfills.js"></script>
     <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/lib.js"></script>
+    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/plugins.js"></script>
     <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond/init.js"></script>
 HTML;
 
