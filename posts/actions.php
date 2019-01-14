@@ -23,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         if ($post['allow_comments']) {
                             $post_item = [
                                 'id' => $post['id'],
-                                'usernam e' => $owner['user_name'],
+                                'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
