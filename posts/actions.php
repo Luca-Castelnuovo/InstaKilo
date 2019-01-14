@@ -137,12 +137,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
 
-        $comments =  $post['comments'];
+        $comments = $post['comments'];
         $comment = [
             'username' => $sender['user_name'],
             'profile_picture' => $sender['profile_picture'],
             'body' => $comment
         ];
+
+        var_dump($comments);
+        var_dump($comment);
+        exit;
+
         array_push($comments, $comment);
 
         response(true, 'new_comments', $comments);
