@@ -5,33 +5,32 @@ loggedin();
 
 page_header('Home');
 ?>
+
+<div class="row">
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light blue accent-4" href="/posts/add">
+            <i class="large material-icons">camera_alt</i>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 l7">
         <div class="row">
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large waves-effect waves-light blue accent-4" href="/posts/add">
-                    <i class="large material-icons">camera_alt</i>
-                </a>
-            </div>
+            <div class="row" id="post_container"></div>
         </div>
+    </div>
+    <div class="col l1"></div>
+    <div class="col l4 hide-on-med-and-down">
         <div class="row">
-            <div class="col s12 l7">
-                <div class="row">
-                    <div class="row" id="post_container"></div>
-                </div>
-            </div>
-            <div class="col l1"></div>
-            <div class="col l4 hide-on-med-and-down">
-                <div class="row">
-                    <a class="col s12 btn-large waves-effect blue accent-4" href="#!">
-                        <h5>Berichten</h5>
-                    </a>
-                </div>
-                <div class="row" id="post_container"></div>
-                <div class="row">
-                    <ul class="collection">
-                        <div class="row" id="messages_container"></div>
-                    </ul>
-                </div>
-            </div>
+            <a class="col s12 btn-large waves-effect blue accent-4" href="#!">
+                <h5>Berichten</h5>
+            </a>
+        </div>
+        <div class="row" id="post_container"></div>
+        <div class="row">
+            <ul class="collection">
+                <div class="row" id="messages_container"></div>
+            </ul>
         </div>
     </div>
 </div>
