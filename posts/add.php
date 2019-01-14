@@ -42,7 +42,7 @@ page_header('Create Post');
             <div class="input-field col s12 m4">
                 <p>
                     <label>
-                        <input type="checkbox" name="allow_comments" value="1" checked>
+                        <input type="checkbox"  class="filled-in" name="allow_comments" value="1" checked>
                         <span>Allow Comments</span>
                     </label>
                 </p>
