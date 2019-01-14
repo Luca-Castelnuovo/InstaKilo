@@ -45,7 +45,7 @@ function alert_display()
 
 function response($success, $message = null, $extra = null)
 {
-    $output = ["success" => $success];
+    $output = ["success" => $success, "CSRFtoken" => csrf_gen()];
 
     if (isset($message) && !empty($message)) {
         if ($success) {

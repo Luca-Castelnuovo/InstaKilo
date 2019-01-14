@@ -28,13 +28,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        csrf_val($_POST['CSRFtoken'], '/home');
+        if (!csrf_val($_POST['CSRFtoken'], 'override')) {
+            response(false, 'csrf_error');
+        }
 
         if (empty($_POST['user_id'])) {
             response(false, 'user_id_empty');
         }
 
+        if (empty($_POST['message'])) {
+            response(false, 'message_empty');
+        }
+
         $user_id = clean_data($_POST['user_id']);
+        $message = clean_data($_POST['message']);
 
         //sql_insert message
 

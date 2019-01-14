@@ -47,20 +47,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         array_push($posts_item, $post_item);
                     }
 
-                    response(true, '', ['posts' => $posts_item, 'CSRFtoken' => csrf_gen()]);
+                    response(true, '', ['posts' => $posts_item]);
                 } else {
-                    response(false, 'no_posts', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'no_posts');
                 }
 
                 exit;
 
             case 'like':
                 if (!csrf_val($_GET['CSRFtoken'], 'override')) {
-                    response(false, 'csrf_error', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'csrf_error');
                 }
 
                 if (empty($_GET['post_id'])) {
-                    response(false, 'post_id_empty', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_id_empty');
                 }
 
                 $post_id = clean_data($_GET['post_id']);
@@ -68,11 +68,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $post_liked_by = json_decode($post['liked_by']);
 
                 if (empty($post['id'])) {
-                    response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_not_found');
                 }
 
                 if (in_array($_SESSION['id'], $post_liked_by)) {
-                    response(false, 'post_already_liked', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_already_liked');
                 }
 
                 $post_likes = $post['likes'] + 1;
@@ -81,16 +81,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                response(true, 'Liked', ['CSRFtoken' => csrf_gen(), 'likes' => $post_likes]);
+                response(true, 'Liked', ['likes' => $post_likes]);
                 break;
 
             case 'undo_like':
                 if (!csrf_val($_GET['CSRFtoken'], 'override')) {
-                    response(false, 'csrf_error', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'csrf_error');
                 }
 
                 if (empty($_GET['post_id'])) {
-                    response(false, 'post_id_empty', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_id_empty');
                 }
 
                 $post_id = clean_data($_GET['post_id']);
@@ -98,11 +98,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $post_liked_by = json_decode($post['liked_by']);
 
                 if (empty($post['id'])) {
-                    response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_not_found');
                 }
 
                 if (!in_array($_SESSION['id'], $post_liked_by)) {
-                    response(false, 'post_not_liked', ['CSRFtoken' => csrf_gen()]);
+                    response(false, 'post_not_liked');
                 }
 
                 $post_likes = $post['likes'] - 1;
@@ -113,18 +113,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                response(true, 'Like removed', ['CSRFtoken' => csrf_gen(), 'likes' => $post_likes]);
+                response(true, 'Like removed', ['likes' => $post_likes]);
                 break;
 
             default:
-                response(false, 'unknown_type', ['CSRFtoken' => csrf_gen()]);
+                response(false, 'unknown_type');
                 break;
         }
         break;
 
     case 'POST':
         if (!csrf_val($_POST['CSRFtoken'], 'override')) {
-            response(false, 'csrf_error', ['CSRFtoken' => csrf_gen()]);
+            response(false, 'csrf_error');
         }
 
         $post_id = clean_data($_POST['post_id']);
@@ -132,7 +132,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $post = sql_select('posts', 'id,comments', "id='{$post_id}'", true);
         if (empty($post['id'])) {
-            response(false, 'post_not_found', ['CSRFtoken' => csrf_gen()]);
+            response(false, 'post_not_found');
         }
 
         $sender = sql_query('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
@@ -147,10 +147,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
 
-        response(true, 'comment_sent', ['CSRFtoken' => csrf_gen(), 'comments' => $comments, 'new_comment' => $comment]);
+        response(true, 'comment_sent', ['comments' => $comments, 'new_comment' => $comment]);
         break;
 
     default:
-        response(false, 'incorrect_method', ['CSRFtoken' => csrf_gen()]);
+        response(false, 'incorrect_method');
         break;
 }
