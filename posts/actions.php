@@ -165,7 +165,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $comments = [];
         }
 
+        $comment_id = gen(16);
         $comment = [
+            'id' => $comment_id,
             'user_id' => $_SESSION['id'],
             'body' => $comment_body
         ];
@@ -187,6 +189,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
 
             $comment_item = [
+                'id' => $comment['id'],
                 'username' => $owner['user_name'],
                 'profile_picture' => $owner['profile_picture'],
                 'body' => $comment['body'],
@@ -199,6 +202,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         // New comment
         $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
         $comment_js = [
+            'id' => $comment_id,
             'username' => $sender['user_name'],
             'profile_picture' => $sender['profile_picture'],
             'body' => $comment_body,
