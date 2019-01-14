@@ -41,6 +41,11 @@ page_header('Create Post');
                 <textarea id="caption" class="materialize-textarea counter" name="caption" data-length="200"></textarea>
             </div>
         </div>
+        <div class="row">
+            <button class="col s12 btn-large waves-effect blue accent-4" type="submit">
+                Submit Post
+            </button>
+        </div>
     </form>
 </div>
 
