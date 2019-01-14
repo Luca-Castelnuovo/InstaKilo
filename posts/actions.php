@@ -151,7 +151,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
 
         // Get new comments
-        $updated_post = sql_select('posts', 'comments', "id='{$post_id}'", false);
+        $updated_post = sql_select('posts', 'comments', "id='{$post_id}'", true);
         $comments_item = [];
         foreach ($comment as $updated_post['comments']) {
             $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
