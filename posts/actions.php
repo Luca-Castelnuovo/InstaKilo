@@ -23,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         if ($post['allow_comments']) {
                             $post_item = [
                                 'id' => $post['id'],
-                                'username' => $owner['user_name'],
+                                'usernam e' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
@@ -144,6 +144,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             'body' => $comment
         ];
         array_push($comments, $comment);
+
+        response(true, 'new_comments', $comments);
 
         sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
 
