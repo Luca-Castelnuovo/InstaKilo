@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             foreach (json_decode($post['comments'], true) as $comment) {
                                 $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
 
-                                if ($owner['id'] == $_SESSION['ide']) {
+                                if ($owner['id'] == $_SESSION['id']) {
                                     $user_is_owner = true;
                                 } else {
                                     $user_is_owner = false;
