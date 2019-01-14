@@ -148,6 +148,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         //     response(false, 'csrf_error');
         // }
 
+        response(false, 'provided_CSRF', [$_POST['CSRFtoken']]);
+
         $post_id = clean_data($_POST['post_id']);
         $comment_body = clean_data($_POST['comment']);
 
