@@ -33,6 +33,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 }
 
                                 $comment_item = [
+                                    'id' => $comment['id'],
                                     'username' => $owner['user_name'],
                                     'profile_picture' => $owner['profile_picture'],
                                     'body' => $comment['body'],
