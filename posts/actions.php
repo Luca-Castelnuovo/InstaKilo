@@ -144,10 +144,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
             'body' => $comment
         ];
 
-        var_dump($comments);
-        var_dump($comment);
-        exit;
-
         array_push($comments, $comment);
 
         response(true, 'new_comments', $comments);
