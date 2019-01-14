@@ -135,7 +135,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             response(false, 'post_not_found');
         }
 
-        $sender = sql_query('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
+        $sender = sql_select('users', 'user_name,profile_picture', "user_id='{$_SESSION['id']}'", true);
 
         $comments =  $post['comments'];
         $comment = [
