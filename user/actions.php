@@ -127,10 +127,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 response(true, '', ['posts' => $posts_item]);
                 exit;
-
-            default:
-                response(false, 'unknown_type');
-                exit;
         }
         exit;
 
