@@ -53,7 +53,7 @@ function page_header($title = 'Unknown')
 HTML;
 }
 
-function page_footer($extra)
+function page_footer($extra = null)
 {
     echo <<<HTML
             </div>

@@ -4,6 +4,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_val($_POST['CSRFtoken'], '/home');
+
     if (empty($_POST['post_img']) || empty($_POST['post_img'])) {
         redirect('/posts/add', 'Please fill in everything');
     }
@@ -59,6 +61,7 @@ page_header('Create Post');
             </div>
         </div>
         <div class="row">
+            <input type="hidden" name="CSRFtoken" value="<?= csrf_gen() ?>">
             <button class="col s12 btn-large waves-effect blue accent-4" type="submit">
                 Submit Post
             </button>
