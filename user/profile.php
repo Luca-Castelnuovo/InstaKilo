@@ -34,7 +34,7 @@ page_header($user_name);
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
-                            <a onclick="user_follow(<?= $user_name ?>)" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="bottom" data-tooltip="Unfollow">Follow</a>
+                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="bottom" data-tooltip="Unfollow">Follow</a>
                         </div>
                     </div>
                     <div class="row">
@@ -68,7 +68,7 @@ page_header($user_name);
                             <div class="row">
                                 <div class="col s12">
                                     <h2><?= $user_name ?></h2>
-                                    <a onclick="user_follow(<?= $user_name ?>)" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="left" data-tooltip="Unfollow">Follow</a>
+                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="left" data-tooltip="Unfollow">Follow</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -131,7 +131,26 @@ page_header($user_name);
 </div>
 
 <div class="row">
-    <!-- List posts -->
+    <div id="post_container"></div>
 </div>
 
-<?= page_footer(); ?>
+<?php
+
+$CSRFtoken = csrf_gen();
+$extra = <<<HTML
+<script>
+    var CSRFtoken = '{$CSRFtoken}';
+    var auto_init = false;
+    var user_name = '<?= $user_name ?>';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        GETrequest(`https://instakilo.lucacastelnuovo.nl/u/${user_name}/feed`, function(response) {
+            document.querySelector('#post_container').innerHTML = feed_render_posts(response);
+            materialize_init();
+        });
+    });
+</script>
+HTML;
+
+?>
+<?= page_footer($extra); ?>
