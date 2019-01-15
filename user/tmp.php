@@ -67,4 +67,3 @@ if ($posts->num_rows != 0) {
     }
 
     response(true, '', ['posts' => $posts_item]);
-    exit;
