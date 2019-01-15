@@ -62,7 +62,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $posts_item = [];
 
                     while ($post = $posts->fetch_assoc()) {
-
                         $owner = sql_select('users', 'user_name', "user_id='{$post['user_id']}'", true);
                         $liked_by = json_decode($post['liked_by']);
                         $liked = in_array($_SESSION['id'], $liked_by);
@@ -74,7 +73,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         }
 
                         if ($post['allow_comments']) {
-
                             $comments_item = [];
                             foreach (json_decode($post['comments'], true) as $comment) {
                                 $owner_comments = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
@@ -108,7 +106,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                                 'comments' => $comments_item,
                             ];
                         } else {
-
                             $post_item = [
                                 'id' => $post['id'],
                                 'user_is_owner' => $user_is_owner_post,
@@ -125,12 +122,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         array_push($posts_item, $post_item);
                     }
 
-                response(true, '', ['posts' => $posts_item]);
-                break;
-        }
+                    response(true, '', ['posts' => $posts_item]);
+                    break;
+                }
     exit;
 
     default:
         response(false, 'incorrect_method');
         exit;
+    }
 }
