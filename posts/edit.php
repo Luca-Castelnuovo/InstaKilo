@@ -15,6 +15,7 @@ if ($post['user_id'] === $_SESSION['id']) {
 
 if (isset($_GET['delete'])) {
     sql_delete('posts', "id='{$post_id}' AND user_id='{$_SESSION['id']}'");
+    redirect('/home', 'Post Deleted');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,7 +53,7 @@ page_header('Update Post');
     <form method="POST" class="col s12">
         <div class="row">
             <div class="col s12 center">
-                <img src="<?= $post['img_url'] ?>" class="responsive-img">
+                <img src="<?= $post['img_url'] ?>" class="responsive-img" width="500">
             </div>
         </div>
         <div class="row">
@@ -74,10 +75,10 @@ page_header('Update Post');
         <div class="row">
             <input type="hidden" name="CSRFtoken" value="<?= csrf_gen() ?>">
             <input type="hidden" name="post_id" value="<?= $post_id ?>">
-            <button class="col s12 m8 btn-large waves-effect blue accent-4" type="submit">
+            <button class="col s12 m6 btn waves-effect blue accent-4" type="submit">
                 Update Post
             </button>
-            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m4 btn-large waves-effect red accent-4" onclick="return confirm('Are you sure?')">
+            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m6 btn waves-effect red accent-4" onclick="return confirm('Are you sure?')">
                 Delete Post
             </a>
         </div>
