@@ -29,7 +29,7 @@ page_header($user_name);
         <p><?= $user['bio'] ?></p>
     </div>
     <div class="col s12 m2">
-        <a href="#!" class="waves-effect waves-light btn blue accent-4">Follow</a>
+        <a href="#!" class="waves-effect waves-light btn-small tooltipped blue accent-4" data-position="bottom" data-tooltip="Unfollow">Follow</a>
     </div>
 </div>
 
