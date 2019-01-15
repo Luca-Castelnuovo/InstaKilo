@@ -67,7 +67,7 @@ page_header($user_name);
                             </div>
                             <div class="row">
                                 <div class="col m6">
-                                    <a onclick="user_followers()" class="black-text pointer"><span class="bold"><?= $followers_count ?></span> followers</a>
+                                    <a onclick="user_followers('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $followers_count ?></span> followers</a>
 
                                     <div class="modal" id="followers_modal">
                                         <div class="modal-content">
@@ -86,7 +86,7 @@ page_header($user_name);
                                     </div>
                                 </div>
                                 <div class="col m6">
-                                    <a onclick="user_following()" class="black-text pointer"><span class="bold"><?= $following_count ?></span> following</a>
+                                    <a onclick="user_following('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $following_count ?></span> following</a>
 
                                     <div class="modal" id="following_modal">
                                         <div class="modal-content">
