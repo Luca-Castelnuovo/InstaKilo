@@ -39,7 +39,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     ]
                 ];
 
-                response(true, 'followers', ['followers' => $followers]);
+                response(true, '', ['followers' => $followers]);
                 break;
 
             case 'following':
@@ -55,7 +55,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     ]
                 ];
 
-                response(true, 'following', ['following' => $following]);
+                response(true, '', ['following' => $following]);
                 break;
 
             default:
