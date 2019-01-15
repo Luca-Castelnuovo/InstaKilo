@@ -54,7 +54,7 @@ function csrf_val($CSRFtoken, $redirect = '/')
         }
     }
 
-    if (!(hash_equals($_SESSION['CSRFtoken'], $CSRFtoken))) {
+    if ($_SESSION['CSRFtoken'] !== $CSRFtoken) {
         if ($redirect === 'override') {
             return false;
         } else {
