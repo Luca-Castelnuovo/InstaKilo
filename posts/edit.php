@@ -77,7 +77,7 @@ page_header('Update Post');
             <button class="col s12 m8 btn-large waves-effect blue accent-4" type="submit">
                 Update Post
             </button>
-            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m8 btn-large waves-effect blue accent-4" onclick="return confirm('Are you sure?')">
+            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m4 btn-large waves-effect red accent-4" onclick="return confirm('Are you sure?')">
                 Delete Post
             </a>
         </div>
