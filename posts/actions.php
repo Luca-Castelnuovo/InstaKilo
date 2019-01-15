@@ -43,19 +43,27 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             $liked_by = json_decode($post['liked_by']);
                             $liked = in_array($_SESSION['id'], $liked_by);
 
+                            if ($post['user_id'] == $_SESSION['id']) {
+                                $user_is_owner = true;
+                            } else {
+                                $user_is_owner = false;
+                            }
+
                             $post_item = [
                                 'id' => $post['id'],
+                                'user_is_owner' => $user_is_owner,
                                 'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
                                 'likes' => $post['likes'],
                                 'liked' => $liked,
                                 'comments_allowed' => true,
-                                'comments' => $comments_item
+                                'comments' => $comments_item,
                             ];
                         } else {
                             $post_item = [
                                 'id' => $post['id'],
+                                'user_is_owner' => $user_is_owner,
                                 'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
