@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             response(false, 'username_empty');
         }
 
-        $switch ($_GET['type']) {
+        switch ($_GET['type']) {
             case 'follow':
 
                 response(true, 'Followed');
