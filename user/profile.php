@@ -18,10 +18,15 @@ page_header($user_name);
 ?>
 
 <div class="row">
-    <div class="col s12">
-        <pre>
-            <?= print_r($user) ?>
-        </pre>
+    <div class="col m4 hide-on-small-only">
+        <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle">
+    </div>
+    <div class="col s12 show-on-small center">
+        <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle">
+    </div>
+    <div class="col s12 m8">
+        <h2><?= $user_name ?></h2>
+        <p><?= $user['bio'] ?></p>
     </div>
 </div>
 
