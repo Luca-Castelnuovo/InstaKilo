@@ -75,10 +75,11 @@ page_header('Update Post');
         <div class="row">
             <input type="hidden" name="CSRFtoken" value="<?= csrf_gen() ?>">
             <input type="hidden" name="post_id" value="<?= $post_id ?>">
-            <button class="col s12 m6 btn waves-effect blue accent-4" type="submit">
+            <button class="col s12 m5 btn waves-effect blue accent-4" type="submit">
                 Update Post
             </button>
-            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m6 btn waves-effect red accent-4" onclick="return confirm('Are you sure?')">
+            <div class="col m2"></div>
+            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m5 btn waves-effect red accent-4" onclick="return confirm('Are you sure?')">
                 Delete Post
             </a>
         </div>
