@@ -7,7 +7,7 @@ loggedin();
 
 $post_id = clean_data($_REQUEST['post_id']);
 
-$post = sql_select('posts', 'user_id,caption,allow_comments', "id='{$post_id}'", true);
+$post = sql_select('posts', 'user_id,caption,allow_comments,img_url', "id='{$post_id}'", true);
 
 if ($post['user_id'] === $_SESSION['id']) {
     redirect('/home', 'Access Denied');
@@ -46,7 +46,9 @@ page_header('Update Post');
 
 <div class="row">
     <form method="POST" class="col s12">
-        <h4>Update Post</h4>
+        <div class="row">
+            <img src="<?= $post['img_url'] ?>" class="responsive-img">
+        </div>
         <div class="row">
             <div class="input-field col s12">
                 <p>

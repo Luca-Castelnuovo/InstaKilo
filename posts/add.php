@@ -40,7 +40,6 @@ page_header('Create Post');
 
 <div class="row">
     <form method="POST" class="col s12">
-        <h4>New Post</h4>
         <div class="row">
             <div class="input-field col s12 m8">
                 <input type="file" name="post_img" required>
