@@ -24,9 +24,12 @@ page_header($user_name);
     <div class="col s12 show-on-small center">
         <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle">
     </div>
-    <div class="col s12 m8">
+    <div class="col s12 m6">
         <h2><?= $user_name ?></h2>
         <p><?= $user['bio'] ?></p>
+    </div>
+    <div class="col s12 m2">
+        <a href="#!" class="waves-effect waves-light btn blue accent-4">Follow</a>
     </div>
 </div>
 
