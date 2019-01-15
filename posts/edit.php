@@ -47,7 +47,9 @@ page_header('Update Post');
 <div class="row">
     <form method="POST" class="col s12">
         <div class="row">
-            <img src="<?= $post['img_url'] ?>" class="responsive-img">
+            <div class="col s12 center">
+                <img src="<?= $post['img_url'] ?>" class="responsive-img">
+            </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
