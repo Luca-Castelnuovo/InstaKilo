@@ -97,16 +97,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $post = sql_select('posts', 'id,likes,liked_by', "id='{$post_id}'", true);
                 $post_liked_by = json_decode($post['liked_by']);
 
+                if (!is_array($post_liked_by)) {
+                    $post_liked_by = [];
+                }
+
                 if (empty($post['id'])) {
                     response(false, 'post_not_found');
                 }
 
                 if (in_array($_SESSION['id'], $post_liked_by)) {
                     response(false, 'post_already_liked');
-                }
-
-                if (!is_array($post['likes'])) {
-                    $post['likes'] = [];
                 }
 
                 $post_likes = $post['likes'] + 1;
@@ -131,16 +131,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $post = sql_select('posts', 'id,likes,liked_by', "id='{$post_id}'", true);
                 $post_liked_by = json_decode($post['liked_by']);
 
+                if (!is_array($post_liked_by)) {
+                    $post_liked_by = [];
+                }
+
                 if (empty($post['id'])) {
                     response(false, 'post_not_found');
                 }
 
                 if (!in_array($_SESSION['id'], $post_liked_by)) {
                     response(false, 'post_not_liked');
-                }
-
-                if (!is_array($post['likes'])) {
-                    $post['likes'] = [];
                 }
 
                 $post_likes = $post['likes'] - 1;
