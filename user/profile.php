@@ -147,7 +147,7 @@ $extra = <<<HTML
 
     document.addEventListener('DOMContentLoaded', function() {
         GETrequest(`https://instakilo.lucacastelnuovo.nl/u/${user_name}/feed`, function(response) {
-            document.querySelector('#post_container').innerHTML = feed_render_posts(response);
+            document.querySelector('#post_container').innerHTML = feed_render_posts_profile(response);
             materialize_init();
         });
     });
