@@ -17,41 +17,41 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
                     while ($post = $posts->fetch_assoc()) {
+                        $owner = sql_select('users', 'user_name', "user_id='{$post['user_id']}'", true);
+                        $liked_by = json_decode($post['liked_by']);
+                        $liked = in_array($_SESSION['id'], $liked_by);
+
+                        if ($post['user_id'] == $_SESSION['id']) {
+                            $user_is_owner_post = true;
+                        } else {
+                            $user_is_owner_post = false;
+                        }
+
                         if ($post['allow_comments']) {
                             $comments_item = [];
                             foreach (json_decode($post['comments'], true) as $comment) {
-                                $owner = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
+                                $owner_comments = sql_select('users', 'id,user_name,profile_picture', "user_id='{$comment['user_id']}'", true);
 
                                 if ($comment['user_id'] == $_SESSION['id']) {
-                                    $user_is_owner = true;
+                                    $user_is_owner_comment = true;
                                 } else {
-                                    $user_is_owner = false;
+                                    $user_is_owner_comment = false;
                                 }
 
                                 $comment_item = [
                                     'id' => $comment['id'],
-                                    'username' => $owner['user_name'],
-                                    'profile_picture' => $owner['profile_picture'],
+                                    'username' => $owner_comments['user_name'],
+                                    'profile_picture' => $owner_comments['profile_picture'],
                                     'body' => $comment['body'],
-                                    'user_is_owner' => $user_is_owner
+                                    'user_is_owner' => $user_is_owner_comment
                                 ];
 
                                 array_push($comments_item, $comment_item);
                             }
 
-                            $owner = sql_select('users', 'user_name', "user_id='{$post['user_id']}'", true);
-                            $liked_by = json_decode($post['liked_by']);
-                            $liked = in_array($_SESSION['id'], $liked_by);
-
-                            if ($post['user_id'] == $_SESSION['id']) {
-                                $user_is_owner = true;
-                            } else {
-                                $user_is_owner = false;
-                            }
-
                             $post_item = [
                                 'id' => $post['id'],
-                                'user_is_owner' => $user_is_owner,
+                                'user_is_owner' => $user_is_owner_post,
                                 'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
@@ -63,7 +63,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         } else {
                             $post_item = [
                                 'id' => $post['id'],
-                                'user_is_owner' => $user_is_owner,
+                                'user_is_owner' => $user_is_owner_post,
                                 'username' => $owner['user_name'],
                                 'img_url' => $post['img_url'],
                                 'caption' => $post['caption'],
