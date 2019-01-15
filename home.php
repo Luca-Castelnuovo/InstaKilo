@@ -22,8 +22,8 @@ page_header('Home');
     <div class="col l1"></div>
     <div class="col l4 hide-on-med-and-down">
         <div class="row">
-            <a class="col s12 btn-large waves-effect blue accent-4" href="#!">
-                <h5>Berichten</h5>
+            <a class="col s12 btn-large waves-effect blue accent-4" href="/messages/">
+                <h5>Messages</h5>
             </a>
         </div>
         <div class="row" id="post_container"></div>
