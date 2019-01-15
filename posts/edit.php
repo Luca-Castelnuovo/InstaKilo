@@ -7,9 +7,9 @@ loggedin();
 
 $post_id = clean_data($_REQUEST['post_id']);
 
-$post = sql_query('posts', 'id,caption,allow_comments', "id='{$post_id}' AND user_id='{$_SESSION['id']}'", true);
+$post = sql_query('posts', 'user_id,caption,allow_comments', "id='{$post_id}'", true);
 
-if (empty($post['id'])) {
+if ($post['user_id'] === $_SESSION['id']) {
     redirect('/home', 'Access Denied');
 }
 
