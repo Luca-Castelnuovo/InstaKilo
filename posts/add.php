@@ -8,6 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect('/posts/add', 'Please fill in everything');
     }
 
+    if (strlen($_POST['caption']) > 400) {
+        redirect('/posts/add', 'Caption too long');
+    }
+
     $img_url = clean_data($_POST['post_img']);
     $caption = clean_data($_POST['caption']);
     $allow_comments = clean_data($_POST['allow_comments']);
@@ -51,7 +55,7 @@ page_header('Create Post');
         <div class="row">
             <div class="input-field col s12">
                 <label for="caption">Caption</label>
-                <textarea id="caption" class="materialize-textarea" name="caption" required></textarea>
+                <textarea id="caption" class="materialize-textarea counter" name="caption" required data-length="400"></textarea>
             </div>
         </div>
         <div class="row">
