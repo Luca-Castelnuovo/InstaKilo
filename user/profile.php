@@ -131,7 +131,7 @@ page_header($user_name);
 </div>
 
 <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12">
         <div id="post_container"></div>
     </div>
 </div>
