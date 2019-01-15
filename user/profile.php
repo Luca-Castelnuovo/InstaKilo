@@ -33,13 +33,8 @@ page_header($user_name);
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <h2><?= $user_name ?></h2>
+                            <h2 class="mt-0"><?= $user_name ?></h2>
                             <a onclick="user_follow(<?= $user_name ?>)" class="waves-effect waves-light btn tooltipped blue accent-4" data-position="bottom" data-tooltip="Unfollow">Follow</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
                     <div class="row">
@@ -48,6 +43,11 @@ page_header($user_name);
                         </div>
                         <div class="col s6">
                             <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $following_count ?></span> following</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p><span class="bold">Bio:</span> <?= $user['bio'] ?></p>
                         </div>
                     </div>
                 </div>
