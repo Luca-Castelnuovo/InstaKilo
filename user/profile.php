@@ -73,9 +73,9 @@ page_header($user_name);
                                         <div class="modal-content">
                                             <div class="row">
                                                 <h4>Followers</h4>
-                                                <button type="submit" class="btn-floating btn waves-effect waves-light blue accent-4 right">
+                                                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
                                                     <i class="material-icons">close</i>
-                                                </button>
+                                                </a>
                                             </div>
                                             <div class="row">
                                                 <ul class="collection">
@@ -92,9 +92,9 @@ page_header($user_name);
                                         <div class="modal-content">
                                             <div class="row">
                                                 <h4>Following</h4>
-                                                <button type="submit" class="btn-floating btn waves-effect waves-light blue accent-4 right">
+                                                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
                                                     <i class="material-icons">close</i>
-                                                </button>
+                                                </a>
                                             </div>
                                             <div class="row">
                                                 <ul class="collection">
