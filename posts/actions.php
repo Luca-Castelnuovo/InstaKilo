@@ -105,6 +105,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'post_already_liked');
                 }
 
+                if (!is_array($post['likes'])) {
+                    $post['likes'] = [];
+                }
+
                 $post_likes = $post['likes'] + 1;
 
                 array_push($post_liked_by, $_SESSION['id']);
@@ -133,6 +137,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 if (!in_array($_SESSION['id'], $post_liked_by)) {
                     response(false, 'post_not_liked');
+                }
+
+                if (!is_array($post['likes'])) {
+                    $post['likes'] = [];
                 }
 
                 $post_likes = $post['likes'] - 1;
