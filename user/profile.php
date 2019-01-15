@@ -45,11 +45,10 @@ page_header($user_name);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s5">
+                        <div class="col s6">
                             <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $followers_count ?></span> followers</a>
                         </div>
-                        <div class="col s2"></div>
-                        <div class="col s5">
+                        <div class="col s6">
                             <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $following_count ?></span> following</a>
                         </div>
                     </div>
@@ -61,33 +60,33 @@ page_header($user_name);
     <!-- Tablet and up -->
     <div class="hide-on-small-only">
         <div class="row">
-            <div class="col m12">
+            <div class="col s12">
                 <div class="card-panel">
                     <div class="row">
-                        <div class="col m5">
+                        <div class="col s5">
                             <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle" width="200">
                         </div>
-                        <div class="col m7">
+                        <div class="col s7">
                             <div class="row">
-                                <div class="col m9">
+                                <div class="col s9">
                                     <h2><?= $user_name ?></h2>
                                 </div>
-                                <div class="col m3">
+                                <div class="col s3">
                                     <a href="#!" class="waves-effect waves-light btn tooltipped blue accent-4" data-position="bottom" data-tooltip="Unfollow">Follow</a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col m6">
+                                <div class="col s6">
                                     <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $followers_count ?></span> followers</a>
                                 </div>
-                                <div class="col m6">
+                                <div class="col s6">
                                     <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $following_count ?></span> following</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col m12">
+                        <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
@@ -99,10 +98,10 @@ page_header($user_name);
 
 <div class="modal" id="following_modal">
     <div class="modal-content">
-        <div class="col m6">
+        <div class="col s6">
             <h4>Following</h4>
         </div>
-        <div class="col m6">
+        <div class="col s6">
             <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
                 <i class="material-icons">close</i>
             </a>
@@ -118,10 +117,10 @@ page_header($user_name);
 <div class="modal" id="followers_modal">
     <div class="modal-content">
         <div class="row">
-            <div class="col m6">
+            <div class="col s6">
                 <h4>Followers</h4>
             </div>
-            <div class="col m6">
+            <div class="col s6">
                 <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
                     <i class="material-icons">close</i>
                 </a>
