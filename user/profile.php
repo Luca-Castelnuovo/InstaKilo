@@ -20,7 +20,7 @@ page_header($user_name);
 <div class="row">
     <div class="col s12">
         <pre>
-            <?= var_dump($user) ?>
+            <?= print_r($user) ?>
         </pre>
     </div>
 </div>
