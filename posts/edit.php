@@ -13,6 +13,10 @@ if ($post['user_id'] === $_SESSION['id']) {
     redirect('/home', 'Access Denied');
 }
 
+if (isset($_GET['delete'])) {
+    sql_delete('posts', "id='{$post_id}' AND user_id='{$_SESSION['id']}'");
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['caption']) && strlen($_POST['caption']) > 400) {
         redirect('/posts/add', 'Caption too long');
@@ -70,9 +74,12 @@ page_header('Update Post');
         <div class="row">
             <input type="hidden" name="CSRFtoken" value="<?= csrf_gen() ?>">
             <input type="hidden" name="post_id" value="<?= $post_id ?>">
-            <button class="col s12 btn-large waves-effect blue accent-4" type="submit">
+            <button class="col s12 m8 btn-large waves-effect blue accent-4" type="submit">
                 Update Post
             </button>
+            <a href="/posts/edit?delete&post_id=<?= $post_id ?>" class="col s12 m8 btn-large waves-effect blue accent-4" onclick="return confirm('Are you sure?')">
+                Delete Post
+            </a>
         </div>
     </form>
 </div>
