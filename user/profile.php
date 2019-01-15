@@ -77,10 +77,10 @@ page_header($user_name);
                             </div>
                             <div class="row">
                                 <div class="col m6">
-                                    <a onclick="user_followers('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $followers_count ?></span> followers</a>
+                                    <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light"><span class="bold"><?= $followers_count ?></span> followers</a>
                                 </div>
                                 <div class="col m6">
-                                    <a onclick="user_following('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $following_count ?></span> following</a>
+                                    <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light"><span class="bold"><?= $following_count ?></span> following</a>
                                 </div>
                             </div>
                         </div>
