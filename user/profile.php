@@ -32,14 +32,24 @@ page_header($user_name);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12">
+                        <div class="col s9">
                             <h2><?= $user_name ?></h2>
-                            <p><?= $user['bio'] ?></p>
+                        </div>
+                        <div class="col s3">
+                            <a href="#!" class="col s12 waves-effect waves-light btn tooltipped blue accent-4" data-position="bottom" data-tooltip="Unfollow">Follow</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <a href="#!" class="col s12 waves-effect waves-light btn tooltipped blue accent-4" data-position="bottom" data-tooltip="Unfollow">Follow</a>
+                            <p><?= $user['bio'] ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m6">
+                            <a onclick="user_followers('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $followers_count ?></span> followers</a>
+                        </div>
+                        <div class="col m6">
+                            <a onclick="user_following('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $following_count ?></span> following</a>
                         </div>
                     </div>
                 </div>
@@ -68,41 +78,9 @@ page_header($user_name);
                             <div class="row">
                                 <div class="col m6">
                                     <a onclick="user_followers('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $followers_count ?></span> followers</a>
-
-                                    <div class="modal" id="followers_modal">
-                                        <div class="modal-content">
-                                            <div class="row">
-                                                <h4>Followers</h4>
-                                                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
-                                                    <i class="material-icons">close</i>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <ul class="collection">
-                                                    <div id="followers_container"></div>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col m6">
                                     <a onclick="user_following('<?= $user_name ?>')" class="black-text pointer"><span class="bold"><?= $following_count ?></span> following</a>
-
-                                    <div class="modal" id="following_modal">
-                                        <div class="modal-content">
-                                            <div class="row">
-                                                <h4>Following</h4>
-                                                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
-                                                    <i class="material-icons">close</i>
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <ul class="collection">
-                                                    <div id="following_container"></div>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +92,44 @@ page_header($user_name);
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="following_modal">
+    <div class="modal-content">
+        <div class="col m6">
+            <h4>Following</h4>
+        </div>
+        <div class="col m6">
+            <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <div class="row">
+            <ul class="collection">
+                <div id="following_container"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="followers_modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col m6">
+                <h4>Followers</h4>
+            </div>
+            <div class="col m6">
+                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
+                    <i class="material-icons">close</i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="collection">
+                <div id="followers_container"></div>
+            </ul>
         </div>
     </div>
 </div>
