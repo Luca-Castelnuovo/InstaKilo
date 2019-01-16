@@ -172,6 +172,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
             reponse(false, 'comment_too_long');
         }
 
+        if (strlen($comment_body) < 1) {
+            reponse(false, 'comment_too_short');
+        }
+
         $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
         if (empty($post['id'])) {
             response(false, 'post_not_found');
