@@ -169,11 +169,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $comment_body = clean_data($_POST['comment']);
 
         if (strlen($comment_body) > 200) {
-            reponse(false, 'comment_too_long');
+            response(false, 'comment_too_long');
         }
 
         if (strlen($comment_body) < 1) {
-            reponse(false, 'comment_too_short');
+            response(false, 'comment_too_short');
         }
 
         $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
