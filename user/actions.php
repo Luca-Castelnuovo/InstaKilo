@@ -23,35 +23,68 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'followers':
-                $followers = [
-                    [
-                        'username' => 'MathijsH',
-                        'profile_picture' => 'https://i.imgur.com/R1WaY0a.jpg',
-                        'is_following' => true
-                    ],
-                    [
-                        'username' => 'MarvinAlien',
-                        'profile_picture' => 'https://st.depositphotos.com/1020915/4615/i/950/depositphotos_46154511-stock-photo-man-in-profile-with-green.jpg',
-                        'is_following' => false
-                    ]
-                ];
+                //Get followers
+                $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
+                $followers = json_decode($user['following']);
+                // End Get Followers
 
-                response(true, '', ['followers' => $followers]);
+
+                $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                $user_followers = json_decode($user_visiting['following']);
+
+                $all_followers = [];
+
+                foreach ($followers as $follower) {
+                    $user_follower = sql_select('users', 'user_name,profile_picture', "user_id='{$follower}'", true);
+
+                    if (in_array($user_followers, $follower)) {
+                        $is_following = true;
+                    } else {
+                        $is_following = false;
+                    }
+
+
+                    $follower_user = [
+                        'username' => $user_follower['user_name'],
+                        'profile_picture' => $user_follower['profile_picture'],
+                        'is_following' => $is_following
+                    ];
+
+                    array_push($all_followers, $follower_user);
+                }
+
+                response(true, '', ['followers' => $all_followers]);
                 break;
 
             case 'following':
-                $following = [
-                    [
-                        'username' => 'MathijsH',
-                        'profile_picture' => 'https://i.imgur.com/R1WaY0a.jpg',
-                    ],
-                    [
-                        'username' => 'MarvinAlien',
-                        'profile_picture' => 'https://st.depositphotos.com/1020915/4615/i/950/depositphotos_46154511-stock-photo-man-in-profile-with-green.jpg',
-                    ]
-                ];
+                $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
+                $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
 
-                response(true, '', ['following' => $following]);
+                $followings = json_decode($user['following']);
+                $user_followings = json_decode($user_visiting['following']);
+
+                $all_followings = [];
+
+                foreach ($followings as $following) {
+                    $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
+
+                    if (in_array($user_followings, $following)) {
+                        $is_following = true;
+                    } else {
+                        $is_following = false;
+                    }
+
+
+                    $following_user = [
+                        'username' => $user_following['user_name'],
+                        'profile_picture' => $user_following['profile_picture'],
+                        'is_following' => $is_following
+                    ];
+
+                    array_push($all_followings, $following_user);
+                }
+
+                response(true, '', ['following' => $all_followings]);
                 break;
 
             case 'feed':

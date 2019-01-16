@@ -14,7 +14,7 @@ if (empty($user['user_id'])) {
 }
 
 $followers_count = 100;
-$following_count = 100;
+$following_count = count(json_decode($user['following']));
 
 page_header($user_name);
 
@@ -34,12 +34,12 @@ page_header($user_name);
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
-                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="bottom" data-tooltip="Unfollow">Follow</a>
+                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12" data-position="bottom" data-tooltip="Unfollow">Following</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $followers_count ?></span> followers</a>
+                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold"><?= $followers_count ?></span> followers</a>
                         </div>
                         <div class="col s6">
                             <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $following_count ?></span> following</a>
@@ -68,7 +68,7 @@ page_header($user_name);
                             <div class="row">
                                 <div class="col s12">
                                     <h2><?= $user_name ?></h2>
-                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped blue accent-4 col s12" data-position="left" data-tooltip="Unfollow">Follow</a>
+                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped grey lighten-5 col s12" data-position="left" data-tooltip="Unfollow">Following</a>
                                 </div>
                             </div>
                             <div class="row">
