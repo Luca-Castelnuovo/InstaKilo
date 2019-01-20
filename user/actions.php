@@ -8,7 +8,7 @@ loggedin();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $username = clean_data($_GET['username']);
-        $user = sql_select('users', '*', "user_name='{$user_name}'", true);
+        $user = sql_select('users', '*', "user_name='{$username}'", true);
 
         if (empty($user['id'])) {
             response(false, 'user_not_found');
