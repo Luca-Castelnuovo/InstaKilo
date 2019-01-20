@@ -115,7 +115,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                response(true, 'Liked', ['likes' => $post_likes]);
+                response(true, '', ['likes' => $post_likes]);
                 break;
 
             case 'undo_like':
@@ -151,7 +151,48 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 sql_update('posts', ['likes' => $post_likes, 'liked_by' => json_encode($post_liked_by)], "id='{$post_id}'");
 
-                response(true, 'Like removed', ['likes' => $post_likes]);
+                response(true, '', ['likes' => $post_likes]);
+                break;
+
+            case 'delete_comment':
+                if (!csrf_val($_GET['CSRFtoken'], 'override')) {
+                    response(false, 'csrf_error');
+                }
+
+                if (empty($_GET['post_id'])) {
+                    response(false, 'post_id_empty');
+                }
+
+                if (empty($_GET['comment_id'])) {
+                    response(false, 'post_id_empty');
+                }
+
+                $post_id = clean_data($_GET['post_id']);
+                $comment_id = clean_data($_GET['comment_id']);
+
+                $post = sql_select('posts', 'id,comments,allow_comments', "id='{$post_id}'", true);
+                if (empty($post['id'])) {
+                    response(false, 'post_not_found');
+                }
+
+                if (!$post['allow_comments']) {
+                    response(false, 'comments_not_allowed');
+                }
+
+                $comments = json_decode($post['comments'], true);
+                if (!is_array($comments)) {
+                    response(false, 'comment_not_found');
+                }
+
+                foreach ($comments as $key => $val) {
+                    if ($val['id'] === $comment_id) {
+                        unset($comments[$key]);
+                        sql_update('posts', ['comments' => json_encode($comments)], "id='{$post_id}'");
+                        response(true, 'comment_removed');
+                    }
+                }
+
+                response(true, 'comment_not_found');
                 break;
 
             default:
