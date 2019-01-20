@@ -65,7 +65,7 @@ function page_footer($extra = null)
         </div>
         {$extra}
         <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
-        <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.99.js"></script>
+        <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/app.100.js"></script>
 HTML;
     alert_display();
     echo <<<HTML
