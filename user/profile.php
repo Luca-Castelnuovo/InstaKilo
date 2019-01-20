@@ -34,7 +34,7 @@ page_header($user_name);
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
-                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12" data-position="bottom" data-tooltip="Unfollow">Following</a>
+                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
                         </div>
                     </div>
                     <div class="row">
