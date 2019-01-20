@@ -56,7 +56,7 @@ page_header('Create Post');
         <div class="row">
             <div class="input-field col s12">
                 <label for="caption">Caption</label>
-                <textarea id="caption" class="materialize-textarea counter" name="caption" required data-length="400"></textarea>
+                <textarea id="caption" class="materialize-textarea counter validate" name="caption" required data-length="400"></textarea>
             </div>
         </div>
         <div class="row">
