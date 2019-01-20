@@ -45,6 +45,7 @@ $extra = <<<HTML
         GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
             document.querySelector('#post_container').innerHTML = feed_render_posts(response);
             materialize_init();
+            render_hashtags();
         });
 
         GETrequest(`https://instakilo.lucacastelnuovo.nl/messages/actions`, function(response) {
