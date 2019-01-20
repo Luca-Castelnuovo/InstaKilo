@@ -25,7 +25,7 @@ function page_header($title = 'Unknown')
         <!-- Styles -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/general/css/materialize.css" />
-        <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/css/style.7.css" />
+        <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/css/style.8.css" />
     </head>
 
     <body>
