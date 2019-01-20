@@ -58,22 +58,21 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
             case 'following':
                 $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
-                $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
-
                 $followings = json_decode($user['following']);
-                $user_followings = json_decode($user_visiting['following']);
+
+                $visitor = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                $visitor_followings = json_decode($visitor['following']);
 
                 $all_followings = [];
 
                 foreach ($followings as $following) {
-                    $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
-
-                    if (in_array($user_followings, $following)) {
+                    if (in_array($visitor_followings, $following)) {
                         $is_following = true;
                     } else {
                         $is_following = false;
                     }
 
+                    $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
 
                     $following_user = [
                         'username' => $user_following['user_name'],
