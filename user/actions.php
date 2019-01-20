@@ -8,6 +8,11 @@ loggedin();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $username = clean_data($_GET['username']);
+        $user = sql_select('users', '*', "user_name='{$user_name}'", true);
+
+        if (empty($user['id'])) {
+            response(false, 'user_not_found');
+        }
 
         if (empty($username)) {
             response(false, 'username_empty');
@@ -57,15 +62,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'following':
-                $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
-                $followings = json_decode($user['following']);
+                $user_is_following = json_decode($user['following']);
 
                 $visitor = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
                 $visitor_followings = json_decode($visitor['following']);
 
-                $all_followings = [];
+                $user_is_following_output = [];
 
-                foreach ($followings as $following) {
+                foreach ($user_is_following as $following) {
                     if (in_array($visitor_followings, $following)) {
                         $is_following = true;
                     } else {
@@ -80,10 +84,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         'is_following' => $is_following
                     ];
 
-                    array_push($all_followings, $following_user);
+                    array_push($user_is_following_output, $following_user);
                 }
 
-                response(true, '', ['following' => $all_followings]);
+                response(true, '', ['following' => $user_is_following_output]);
                 break;
 
             case 'feed':
