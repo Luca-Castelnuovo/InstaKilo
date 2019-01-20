@@ -7,7 +7,7 @@ loggedin();
 
 $user_name = clean_data($_REQUEST['user_name']);
 
-$user = sql_select('users', 'user_id,profile_picture,bio,following,is_private', "user_name='{$user_name}'", true);
+$user = sql_select('users', 'user_id,profile_picture,bio,following', "user_name='{$user_name}'", true);
 
 if (empty($user['user_id'])) {
     redirect('/home', 'User doesn\'t exist');
