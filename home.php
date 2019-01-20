@@ -20,7 +20,7 @@ page_header('Home');
         </div>
     </div>
     <div class="col l1"></div>
-    <div class="col l4 hide-on-med-and-down">
+    <div class="col l4 hide-on-med-and-down pushpin">
         <div class="row">
             <a class="col s12 btn-large waves-effect blue accent-4" href="/messages/">
                 <h5>Messages</h5>
