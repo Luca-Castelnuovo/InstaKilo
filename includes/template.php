@@ -37,7 +37,8 @@ function page_header($title = 'Unknown')
                     <ul class="right hide-on-med-and-down">
                         <li><a href="/users" class="tooltipped" data-position="bottom" data-tooltip="Users"><i class="material-icons">group</i></a></li>
                         <li><a href="/messages" class="tooltipped" data-position="bottom" data-tooltip="Messages"><i class="material-icons">message</i></a></li>
-                        <li><a href="/user/profile/u/{$_SESSION['user_name']}" class="tooltipped" data-position="bottom" data-tooltip="Profile"><i class="material-icons">person</i></a></li>
+                        <li><a href="/u/{$_SESSION['user_name']}" class="tooltipped" data-position="bottom" data-tooltip="Profile"><i class="material-icons">person</i></a></li>
+                        <li><a href="/?logout" class="tooltipped"><i class="material-icons">exit</i></a></li>
                     </ul>
                 </div>
 
@@ -46,7 +47,7 @@ function page_header($title = 'Unknown')
                     <li class="divider"></li>
                     <li><a href="/users">Users</a></li>
                     <li><a href="/messages">Messages</a></li>
-                    <li><a href="/user/profile/u/{$_SESSION['user_name']}">Profile</a></li>
+                    <li><a href="/u/{$_SESSION['user_name']}">Profile</a></li>
                     <li class="divider"></li>
                     <li><a href="/?logout">Logout</a></li>
                 </ul>
