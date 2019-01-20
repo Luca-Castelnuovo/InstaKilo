@@ -35,14 +35,18 @@ function page_header($title = 'Unknown')
                     <a href="/home" class="brand-logo" style="padding-left: 15px">{$title}</a>
                     <a href="#" data-target="sidenav" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="/user/settings">Settings</a></li>
-                        <li><a href="/?logout">Logout</a></li>
+                        <li><a href="/users" class="tooltipped" data-position="bottom" data-tooltip="Users"><i class="material-icons">group</i></a></li>
+                        <li><a href="/messages" class="tooltipped" data-position="bottom" data-tooltip="Messages"><i class="material-icons">message</i></a></li>
+                        <li><a href="/user/profile/u/{$_SESSION['user_name']}" class="tooltipped" data-position="bottom" data-tooltip="Profile"><i class="material-icons">person</i></a></li>
                     </ul>
                 </div>
 
                 <ul class="sidenav" id="sidenav">
                     <li><a href="/home">Home</a></li>
-                    <li><a href="/user/settings">Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/users">Users</a></li>
+                    <li><a href="/messages">Messages</a></li>
+                    <li><a href="/user/profile/u/{$_SESSION['user_name']}">Profile</a></li>
                     <li class="divider"></li>
                     <li><a href="/?logout">Logout</a></li>
                 </ul>

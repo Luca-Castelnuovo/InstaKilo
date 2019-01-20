@@ -29,6 +29,7 @@ if (isset($_GET['code'])) {
             $_SESSION['logged_in'] = true;
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
             $_SESSION['id'] = $user['id'];
+            $_SESSION['user_name'] = $user['username'];
 
             $existing_user = sql_select('users', 'id', "user_id='{$user['id']}'", true);
             if (empty($existing_user['id'])) {
