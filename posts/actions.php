@@ -164,7 +164,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 if (empty($_GET['comment_id'])) {
-                    response(false, 'post_id_empty');
+                    response(false, 'comment_id_empty');
                 }
 
                 $post_id = clean_data($_GET['post_id']);
