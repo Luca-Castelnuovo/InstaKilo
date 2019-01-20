@@ -81,7 +81,7 @@ $extra = <<<HTML
     <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js"></script>
 
 
-    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond.2.js"></script>
+    <script src="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/js/filepond.3.js"></script>
 HTML;
 
 page_footer($extra);
