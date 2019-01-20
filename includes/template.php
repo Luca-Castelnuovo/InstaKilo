@@ -38,7 +38,7 @@ function page_header($title = 'Unknown')
                         <li><a href="/users" class="tooltipped" data-position="bottom" data-tooltip="Users"><i class="material-icons">group</i></a></li>
                         <li><a href="/messages" class="tooltipped" data-position="bottom" data-tooltip="Messages"><i class="material-icons">message</i></a></li>
                         <li><a href="/u/{$_SESSION['user_name']}" class="tooltipped" data-position="bottom" data-tooltip="Profile"><i class="material-icons">person</i></a></li>
-                        <li><a href="/?logout" class="tooltipped"><i class="material-icons">exit</i></a></li>
+                        <li><a href="/?logout"><i class="material-icons">exit_to_app</i></a></li>
                     </ul>
                 </div>
 
