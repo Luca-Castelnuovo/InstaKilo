@@ -6,21 +6,21 @@ loggedin();
 page_header('Home');
 ?>
 
-<div class="row">
+<div class="row mb-0">
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light blue accent-4" href="/posts/add">
             <i class="large material-icons">camera_alt</i>
         </a>
     </div>
 </div>
-<div class="row">
+<div class="row" data-sticky-container>
     <div class="col s12 l7">
         <div class="row">
             <div class="row" id="post_container"></div>
         </div>
     </div>
     <div class="col l1"></div>
-    <div class="col l4 hide-on-med-and-down pushpin">
+    <div id="messages_box" class="col l4 hide-on-med-and-down" data-margin-top="79">
         <div class="row">
             <a class="col s12 btn-large waves-effect blue accent-4" href="/messages/">
                 <h5>Messages</h5>
@@ -38,6 +38,7 @@ page_header('Home');
 <?php
 $CSRFtoken = csrf_gen();
 $extra = <<<HTML
+<script src="https://cdn.jsdelivr.net/gh/rgalus/sticky-js/dist/sticky.min.js"></script>
 <script>
     var CSRFtoken = '{$CSRFtoken}'; var auto_init = false;
 
