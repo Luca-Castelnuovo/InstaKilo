@@ -24,12 +24,15 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'csrf_error');
                 }
 
-                $following = json_decode($user['following']);
-                if (in_array($_SESSION['id'], $following)) {
-                    response(false, 'user_already_follows');
+                $current_user = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+
+                $following = json_decode($current_user['following']);
+
+                if (in_array($user['user_id'], $following)) {
+                    response(false, 'user_already_following');
                 }
 
-                array_push($following, $_SESSION['id']);
+                array_push($following, $user['user_id']);
 
                 sql_update(
                     'users',
@@ -51,14 +54,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 $following = json_decode($current_user['following']);
 
-                print_r($following);
-
-                print_r($current_user);
-
-                print_r($user);
-                exit;
-
-                if (!in_array($user['id'], $following)) {
+                if (!in_array($user['user_id'], $following)) {
                     response(false, 'user_not_following');
                 }
 
