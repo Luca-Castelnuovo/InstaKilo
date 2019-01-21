@@ -52,7 +52,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'user_not_following');
                 }
 
-                unset($following[$user['id']]);
+                if (($key = array_search($user['id'], $following)) !== false) {
+                    unset($following[$key]);
+                }
+
 
                 sql_update(
                     'users',
