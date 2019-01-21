@@ -47,8 +47,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'csrf_error');
                 }
 
-                $following = json_decode($user['following']);
-                if (!in_array($_SESSION['id'], $following)) {
+                $current_user = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+
+                $following = json_decode($current_user['following']);
+                if (!in_array($user['id'], $following)) {
                     response(false, 'user_not_following');
                 }
 
