@@ -52,7 +52,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'user_not_following');
                 }
 
-                unset($following[$_SESSION['id']]);
+                unset($following[$user['id']]);
 
                 sql_update(
                     'users',
