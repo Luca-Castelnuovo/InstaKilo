@@ -41,18 +41,17 @@ function page_header($title = 'Unknown')
                         <li><a href="/?logout"><i class="material-icons">exit_to_app</i></a></li>
                     </ul>
                 </div>
-
-                <ul class="sidenav" id="sidenav">
-                    <li><a href="/home">Home</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/users">Users</a></li>
-                    <li><a href="/messages">Messages</a></li>
-                    <li><a href="/u/{$_SESSION['user_name']}">Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/?logout">Logout</a></li>
-                </ul>
             </nav>
         </div>
+        <ul class="sidenav" id="sidenav">
+            <li><a href="/home">Home</a></li>
+            <li class="divider"></li>
+            <li><a href="/users">Users</a></li>
+            <li><a href="/messages">Messages</a></li>
+            <li><a href="/u/{$_SESSION['user_name']}">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="/?logout">Logout</a></li>
+        </ul>
         <div class="section">
             <div class="container">
 HTML;
