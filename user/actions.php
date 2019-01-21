@@ -70,7 +70,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $user_is_following_output = [];
 
                 foreach ($user_is_following as $following) {
-                    if (in_array($visitor_followings, $following)) {
+                    if (in_array($following, $visitor_followings)) {
                         $is_following = true;
                     } else {
                         $is_following = false;
