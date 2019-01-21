@@ -20,6 +20,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         switch ($_GET['type']) {
             case 'follow':
+                if (!csrf_val($_GET['CSRFtoken'], 'override')) {
+                    response(false, 'csrf_error');
+                }
+
                 $following = json_decode($user['following']);
                 if (in_array($_SESSION['id'], $following)) {
                     response(false, 'user_already_follows');
@@ -39,6 +43,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'undo_follow':
+                if (!csrf_val($_GET['CSRFtoken'], 'override')) {
+                    response(false, 'csrf_error');
+                }
+
                 $following = json_decode($user['following']);
                 if (!in_array($_SESSION['id'], $following)) {
                     response(false, 'user_not_following');
