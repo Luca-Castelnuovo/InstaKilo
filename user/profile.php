@@ -28,7 +28,7 @@ page_header($user_name);
                 <div class="card-panel">
                     <div class="row">
                         <div class="col s12">
-                            <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle" width="200">
+                            <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'" class="circle" width="200">
                         </div>
                     </div>
                     <div class="row">
@@ -62,7 +62,7 @@ page_header($user_name);
                 <div class="card-panel">
                     <div class="row">
                         <div class="col s5">
-                            <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://github.com/identicons/<?= $user_name ?>.png'" class="circle" width="200">
+                            <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'" class="circle" width="200">
                         </div>
                         <div class="col s7">
                             <div class="row">
