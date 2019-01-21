@@ -94,13 +94,15 @@ page_header($user_name);
 
 <div class="modal" id="following_modal">
     <div class="modal-content">
-        <div class="col s6">
-            <h4>Following</h4>
-        </div>
-        <div class="col s6">
-            <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
-                <i class="material-icons">close</i>
-            </a>
+        <div class="row">
+            <div class="col s8">
+                <h4>Following</h4>
+            </div>
+            <div class="col s4">
+                <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
+                    <i class="material-icons">close</i>
+                </a>
+            </div>
         </div>
         <div class="row">
             <ul class="collection">
@@ -113,10 +115,10 @@ page_header($user_name);
 <div class="modal" id="followers_modal">
     <div class="modal-content">
         <div class="row">
-            <div class="col s6">
+            <div class="col s8">
                 <h4>Followers</h4>
             </div>
-            <div class="col s6">
+            <div class="col s4">
                 <a class="btn-floating btn waves-effect waves-light blue accent-4 right modal-close">
                     <i class="material-icons">close</i>
                 </a>
