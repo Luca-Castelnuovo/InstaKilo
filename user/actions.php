@@ -52,8 +52,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'user_not_following');
                 }
 
-                $pos = array_search($_SESSION['id'], $following);
-                unset($following[$pos]);
+                unset($following[$_SESSION['id']]);
 
                 sql_update(
                     'users',
