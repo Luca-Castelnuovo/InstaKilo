@@ -53,6 +53,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 print_r($following);
 
+                print_r($current_user);
+
+                print_r($user);
+                exit;
+
                 if (!in_array($user['id'], $following)) {
                     response(false, 'user_not_following');
                 }
