@@ -39,17 +39,21 @@ page_header($user_name);
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold"><?= $followers_count ?></span> followers</a>
+                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
                         </div>
                         <div class="col s6">
-                            <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold"><?= $following_count ?></span> following</a>
+                            <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="following_number"><?= $following_count ?></span> following</a>
                         </div>
                     </div>
+                    <?php if (!empty($user['bio'])) {
+    ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
+                    <?php
+} ?>
                 </div>
             </div>
         </div>
@@ -81,11 +85,15 @@ page_header($user_name);
                             </div>
                         </div>
                     </div>
+                    <?php if (!empty($user['bio'])) {
+        ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
+                    <?php
+    } ?>
                 </div>
             </div>
         </div>
