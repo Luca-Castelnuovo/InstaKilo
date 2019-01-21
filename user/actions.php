@@ -20,45 +20,76 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         switch ($_GET['type']) {
             case 'follow':
-                response(true, 'Followed');
+                $following = json_decode($user['following']);
+                if (in_array($_SESSION['id'], $following)) {
+                    response(false, 'user_already_follows');
+                }
+
+                array_push($following, $_SESSION['id']);
+
+                sql_update(
+                    'users',
+                    [
+                        'following' => $following,
+                    ],
+                    "user_id='{$_SESSION['id']}'"
+                );
+
+                response(true, 'followed');
                 break;
 
-            case 'unfollow':
-                response(true, 'Unfollowed');
+            case 'undo_follow':
+                $following = json_decode($user['following']);
+                if (!in_array($_SESSION['id'], $following)) {
+                    response(false, 'user_not_following');
+                }
+
+                $pos = array_search($_SESSION['id'], $following);
+                unset($following[$pos]);
+
+                sql_update(
+                    'users',
+                    [
+                        'following' => $following,
+                    ],
+                    "user_id='{$_SESSION['id']}'"
+                );
+
+                response(true, 'undo_followed');
                 break;
 
             case 'followers':
-                //Get followers
-                $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
-                $followers = json_decode($user['following']);
-                // End Get Followers
-
-
-                $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
-                $user_followers = json_decode($user_visiting['following']);
-
-                $all_followers = [];
-
-                foreach ($followers as $follower) {
-                    $user_follower = sql_select('users', 'user_name,profile_picture', "user_id='{$follower}'", true);
-
-                    if (in_array($user_followers, $follower)) {
-                        $is_following = true;
-                    } else {
-                        $is_following = false;
-                    }
-
-
-                    $follower_user = [
-                        'username' => $user_follower['user_name'],
-                        'profile_picture' => $user_follower['profile_picture'],
-                        'is_following' => $is_following
-                    ];
-
-                    array_push($all_followers, $follower_user);
-                }
-
-                response(true, '', ['followers' => $all_followers]);
+                // //Get followers
+                // $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
+                // $followers = json_decode($user['following']);
+                // // End Get Followers
+                //
+                //
+                // $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                // $user_followers = json_decode($user_visiting['following']);
+                //
+                // $all_followers = [];
+                //
+                // foreach ($followers as $follower) {
+                //     $user_follower = sql_select('users', 'user_name,profile_picture', "user_id='{$follower}'", true);
+                //
+                //     if (in_array($user_followers, $follower)) {
+                //         $is_following = true;
+                //     } else {
+                //         $is_following = false;
+                //     }
+                //
+                //
+                //     $follower_user = [
+                //         'username' => $user_follower['user_name'],
+                //         'profile_picture' => $user_follower['profile_picture'],
+                //         'is_following' => $is_following
+                //     ];
+                //
+                //     array_push($all_followers, $follower_user);
+                // }
+                //
+                // response(true, '', ['followers' => $all_followers]);
                 break;
 
             case 'following':
