@@ -34,7 +34,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 sql_update(
                     'users',
                     [
-                        'following' => $following,
+                        'following' => json_encode($following),
                     ],
                     "user_id='{$_SESSION['id']}'"
                 );
@@ -58,7 +58,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 sql_update(
                     'users',
                     [
-                        'following' => $following,
+                        'following' => json_encode($following),
                     ],
                     "user_id='{$_SESSION['id']}'"
                 );
