@@ -87,7 +87,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     array_push($user_is_following_output, $following_user);
                 }
 
-                response(true, '', ['following' => $user_is_following_output]);
+                response(true, '', ['following' => $user_is_following_output, 'following_number' => count($user_is_following)]);
                 break;
 
             case 'feed':
