@@ -33,8 +33,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 array_push($logged_in_user_following, intval($user['user_id']));
 
-                response(false, '', ['old_following' => json_decode($logged_in_user['following']), 'new_following' => $logged_in_user_following, 'new_user' => $user['user_id']]);
-
                 sql_update(
                     'users',
                     [
