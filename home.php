@@ -43,7 +43,9 @@ $CSRFtoken = csrf_gen();
 $extra = <<<HTML
 <script src="https://cdn.jsdelivr.net/gh/rgalus/sticky-js/dist/sticky.min.js"></script>
 <script>
-    var CSRFtoken = '{$CSRFtoken}'; var auto_init = false;
+    var CSRFtoken = '{$CSRFtoken}';
+    var auto_init = false;
+    var range_posts = 10;
 
     document.addEventListener('DOMContentLoaded', function() {
         GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed`, function(response) {
@@ -56,11 +58,7 @@ $extra = <<<HTML
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
 
-        var range_posts;
-        range_posts = 10;
-
         document.querySelector('#loadBtn').addEventListener('click', function() {
-            console.log(range_posts);
             GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=${range_posts}`, function(response) {
                 range_posts += 5;
                 var new_posts = feed_render_posts(response, true);
