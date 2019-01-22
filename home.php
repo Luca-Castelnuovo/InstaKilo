@@ -56,10 +56,13 @@ $extra = <<<HTML
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
 
+        var range_posts;
+        range_posts = 10;
+
         document.querySelector('#loadBtn').addEventListener('click', function() {
-            // var range_posts = 10;
+            console.log(range_posts);
             GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=10`, function(response) {
-                // range_posts += 10;
+                range_posts += 5;
                 var new_posts = feed_render_posts(response, true);
                  if (new_posts !== false) {
                     document.querySelector('#post_container').innerHTML += new_posts;
