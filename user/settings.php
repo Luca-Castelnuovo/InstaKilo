@@ -3,33 +3,15 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
 
+// TODO: build page
+redirect('/home', 'Work In Progress');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_val($_POST['CSRFtoken'], '/home');
 
-    if (empty($_POST['post_img']) || empty($_POST['post_img'])) {
-        redirect('/posts/add', 'Please fill in everything');
-    }
+    //update user
 
-    if (strlen($_POST['caption']) > 400) {
-        redirect('/posts/add', 'Caption too long');
-    }
-
-    $img_url = clean_data($_POST['post_img']);
-    $caption = clean_data($_POST['caption']);
-    $allow_comments = clean_data($_POST['allow_comments']);
-
-    if (empty($allow_comments)) {
-        $allow_comments = 0;
-    }
-
-    sql_insert('posts', [
-        'user_id' => $_SESSION['id'],
-        'img_url' => $img_url,
-        'caption' => $caption,
-        'allow_comments' => $allow_comments,
-        'created' => date("Y-m-d H:i:s")
-    ]);
-
+    log_action('7', 'user.updated', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     redirect('/home', 'Posted');
 }
 

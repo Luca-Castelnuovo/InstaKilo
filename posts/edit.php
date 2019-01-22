@@ -15,6 +15,7 @@ if ($post['user_id'] === $_SESSION['id']) {
 
 if (isset($_GET['delete'])) {
     sql_delete('posts', "id='{$post_id}' AND user_id='{$_SESSION['id']}'");
+    log_action('7', 'post.delete', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     redirect('/home', 'Post Deleted');
 }
 
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "id='{$post_id}' AND user_id='{$_SESSION['id']}'"
     );
 
+    log_action('7', 'post.edit', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     redirect('/home', 'Post Updated');
 }
 

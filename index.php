@@ -38,9 +38,10 @@ if (isset($_GET['code'])) {
                     'user_name' => $user['username'],
                     'profile_picture' => $user['profile_picture']
                 ]);
+                log_action('7', 'auth.first_login', $_SERVER["REMOTE_ADDR"], $user['id']);
             }
 
-            log_action('5', 'auth.login', $_SERVER["REMOTE_ADDR"], $user['id']);
+            log_action('7', 'auth.login', $_SERVER["REMOTE_ADDR"], $user['id']);
             redirect('/home', 'You are logged in');
         } catch (Exception $e) {
             redirect('/?reset', $e->getMessage());
@@ -50,7 +51,7 @@ if (isset($_GET['code'])) {
 
 if (isset($_GET['logout'])) {
     if ($_SESSION['logged_in']) {
-        log_action('5', 'auth.logout', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
+        log_action('7', 'auth.logout', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     }
 
     alert_set('You are logged out');
@@ -59,7 +60,7 @@ if (isset($_GET['logout'])) {
 
 if (isset($_GET['reset'])) {
     if ($_SESSION['logged_in']) {
-        log_action('5', 'auth.reset', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
+        log_action('7', 'auth.reset', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     }
 
     reset_session();

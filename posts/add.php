@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'created' => date("Y-m-d H:i:s")
     ]);
 
+    log_action('7', 'post.add', $_SERVER["REMOTE_ADDR"], $_SESSION['id']);
     redirect('/home', 'Posted');
 }
 
