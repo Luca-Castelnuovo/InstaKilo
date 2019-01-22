@@ -94,7 +94,7 @@ HTML;
                                     <?php
 
                                         if ($_SESSION['id'] != $user['user_id']) {
-                                            if (in_array($user['user_id'], $logged_in_user['following'])) {
+                                            if (in_array($user['user_id'], json_decode($logged_in_user['following']))) {
                                                 echo <<<HTML
                                                 <a onclick="user_undo_follow('{$user_name}')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text tooltipped" data-position="bottom" data-tooltip="Unfollow">Following</a>
 HTML;
