@@ -1,0 +1,24 @@
+{
+    "name": "InstaKilo",
+    "short_name": "InstaKilo",
+    "theme_color": "#2962ff",
+    "background_color": "#2962ff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "Scope": "/",
+    "start_url": "/",
+    "icons": [
+
+        {
+            "src": "/192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "splash_pages": null
+}

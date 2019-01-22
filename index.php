@@ -78,17 +78,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     <!-- Config -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="manifest" href="/site.webmanifest"></link>
+    <link rel="manifest" href="/manifest.json" />
     <title>Login || InstaKilo</title>
-
-    <!-- SEO -->
-    <link href="https://logs.lucacastelnuovo.nl" rel="canonical">
-    <meta content="A system to store and access all my logs" name="description">
-
-    <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
