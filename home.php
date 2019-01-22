@@ -57,7 +57,7 @@ $extra = <<<HTML
         });
 
         var range = 10;
-        document.querySelector('#loadBtn').addEventListener('scroll', function() {
+        document.querySelector('#loadBtn').addEventListener('click', function() {
             GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=${range}`, function(response) {
                 range += 10;
                 var new_posts = feed_render_posts(response, true);
@@ -78,6 +78,7 @@ $extra = <<<HTML
                 }
             });
         });
+    });
 </script>
 HTML;
 
