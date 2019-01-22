@@ -81,6 +81,10 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     <link rel="manifest" href="/manifest.json" />
     <title>Login || InstaKilo</title>
 
+    <!-- SEO -->
+    <meta name="description" content="InstaKilo is een leuke manier om je foto's te delen.">
+    <meta name="keywords" content="InstaKilo">
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/general/css/materialize.css">

@@ -13,6 +13,10 @@ function page_header($title = 'Unknown')
         <link rel="manifest" href="/manifest.json" />
         <title>{$title}</title>
 
+        <!-- SEO -->
+        <meta name="description" content="InstaKilo is een leuke manier om je foto's te delen.">
+        <meta name="keywords" content="InstaKilo">
+
         <!-- Styles -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/general/css/materialize.css" />
