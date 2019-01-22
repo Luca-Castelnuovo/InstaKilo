@@ -11,6 +11,7 @@ function page_header($title = 'Unknown')
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2962ff">
         <title>{$title}</title>
 
         <!-- SEO -->
