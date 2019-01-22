@@ -71,7 +71,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 sql_update(
                     'users',
                     [
-                        'following' => json_encode($following),
+                        'following' => json_encode($logged_in_user_following),
                     ],
                     "user_id='{$_SESSION['id']}'"
                 );
