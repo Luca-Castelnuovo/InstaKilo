@@ -64,7 +64,7 @@ page_header($user_name);
         <div class="row">
             <div class="col s12">
                 <div class="card-panel">
-                    <div class="row">
+                    <div class="row mb-0">
                         <div class="col s5">
                             <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'" class="circle" width="200">
                         </div>
