@@ -104,6 +104,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
     </div>
 </div>
     <script src="https://cdn.lucacastelnuovo.nl/general/js/materialize.js"></script>
+    <script src="/sw-register.js"></script>
     <?= alert_display() ?>
 </body>
 
