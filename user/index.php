@@ -16,9 +16,9 @@ page_header('Users');
                 echo <<<END
                 <a href="/u/{$user['user_name']}">
                     <div class="col s12 m6 l4 xl3">
-                        <div class="card">
+                        <div class="card small">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="responsive-img" src="{$user['profile_picture']}" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'">
+                                <img src="{$user['profile_picture']}" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'">
                             </div>
                             <div class="card-content">
                                 <span class="card-title center">
