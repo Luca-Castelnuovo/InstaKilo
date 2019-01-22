@@ -16,7 +16,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
-                    response(false, '', ['posts' => $posts->fetch_assoc()]);
+                    response(false, '', ['posts' => $posts->fetch_array()]);
                     while ($post = $posts->fetch_assoc()) {
                         $owner = sql_select('users', 'user_name', "user_id='{$post['user_id']}'", true);
                         $liked_by = json_decode($post['liked_by']);
