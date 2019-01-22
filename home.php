@@ -52,6 +52,29 @@ $extra = <<<HTML
         GETrequest(`https://instakilo.lucacastelnuovo.nl/messages/actions`, function(response) {
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
+
+        var post_container = document.querySelector('#post_container');
+        post_container.addEventListener('scroll', function() {
+            if (post_container.scrollTop + post_container.clientHeight >= post_container.scrollHeight) {
+                GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=10`, function(response) {
+                    var new_posts = feed_render_posts(response, true);
+
+                    if (new_posts !== false) {
+                        post_container.innerHTML += new_posts;
+                        materialize_init();
+                        render_hashtags();
+                    } else {
+                        post_container.innerHTML += `
+                            <div class="col s12">
+                                <div class="card-panel">
+                                    <p>End of posts</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+            }
+        });
     });
 </script>
 HTML;
