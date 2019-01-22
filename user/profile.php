@@ -14,7 +14,24 @@ if (empty($user['user_id'])) {
     redirect('/home', 'User doesn\'t exist');
 }
 
-$followers_count = 100;
+$user_is_following_sql = sql_select(
+    'users',
+    'user_id',
+    "following
+        LIKE '%,{$user['user_id']},%'
+        OR following LIKE '%[{$user['user_id']},%'
+        OR following LIKE '%,{$user['user_id']}]%'
+        OR following LIKE '%[{$user['user_id']}]%'
+    ",
+    false
+);
+
+$user_is_following = [];
+while ($user_following = $user_is_following_sql->fetch_assoc()) {
+    array_push($user_is_following, $user_following['user_id']);
+}
+
+$followers_count = count($user_is_following);
 $following_count = count(json_decode($user['following']));
 
 page_header($user_name);
@@ -58,10 +75,10 @@ HTML;
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
+                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followersNumber"><?= $followers_count ?></span> followers</a>
                         </div>
                         <div class="col s6">
-                            <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="following_number"><?= $following_count ?></span> following</a>
+                            <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followingNumber"><?= $following_count ?></span> following</a>
                         </div>
                     </div>
                     <?php if (!empty($user['bio'])) {
@@ -114,10 +131,10 @@ HTML;
                             </div>
                             <div class="row">
                                 <div class="col s6">
-                                    <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
+                                    <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followersNumber"><?= $followers_count ?></span> followers</a>
                                 </div>
                                 <div class="col s6">
-                                    <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="following_number"><?= $following_count ?></span> following</a>
+                                    <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followingNumber"><?= $following_count ?></span> following</a>
                                 </div>
                             </div>
                         </div>
