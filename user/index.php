@@ -10,22 +10,24 @@ page_header('Users');
     <div class="col s12">
         <?php
 
-            $users = sql_select('users', 'user_name,profile_picture', 'true', false);
+            $users = sql_select('users', 'user_name,profile_picture', 'true ORDER BY user_name DESC', false);
 
             while ($user = $users->fetch_assoc()) {
                 echo <<<END
-                <div class="col s12 m6 l4 xl3">
-                    <div class="card medium hoverable">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="responsive-img" src="{$user['profile_picture']}" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4 center">
-                                {$user['user_name']}
-                            </span>
+                <a href="/u/{$user['user_name']}">
+                    <div class="col s12 m6 l4 xl3">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="responsive-img" src="{$user['profile_picture']}" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title center">
+                                    {$user['user_name']}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
 END;
             }
 
