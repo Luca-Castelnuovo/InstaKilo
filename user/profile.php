@@ -7,7 +7,7 @@ loggedin();
 
 $user_name = clean_data($_REQUEST['user_name']);
 
-$logged_in_user = sql_select('users', 'following', "user_name='{$user_name}'", true);
+$logged_in_user = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
 $user = sql_select('users', 'user_id,profile_picture,bio,following', "user_name='{$user_name}'", true);
 
 if (empty($user['user_id'])) {
