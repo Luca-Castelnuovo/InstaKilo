@@ -3,7 +3,11 @@
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/init.php';
 loggedin();
 
+// TODO: build page
+redirect('/home', 'Work In Progress');
+
 page_header('Messages');
+
 ?>
 
 <div class="row">

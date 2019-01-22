@@ -125,6 +125,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $is_following = in_array($following, $visitor_followings) ? true : false;
                     $is_user_self = ($_SESSION['id'] == $user['user_id']) ? true : false;
 
+                    response(false, '', ['session' => $_SESSION['id'], 'db' => $user['user_id']]);
+
                     $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
 
                     $following_user = [
