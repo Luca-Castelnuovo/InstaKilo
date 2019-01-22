@@ -123,7 +123,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 foreach ($user_is_following as $following) {
                     $is_following = in_array($following, $visitor_followings) ? true : false;
-                    $is_user_self = ($_SESSION['id'] == $user['id']) ? true : false;
+                    $is_user_self = ($_SESSION['id'] == $user['user_id']) ? true : false;
 
                     $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
 
