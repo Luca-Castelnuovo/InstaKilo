@@ -122,18 +122,16 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $user_is_following_output = [];
 
                 foreach ($user_is_following as $following) {
-                    if (in_array($following, $visitor_followings)) {
-                        $is_following = true;
-                    } else {
-                        $is_following = false;
-                    }
+                    $is_following = in_array($following, $visitor_followings) ? true : false;
+                    $is_user_self = ($_SESSION['id'] == $user['id']) ? true : false;
 
                     $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
 
                     $following_user = [
                         'username' => $user_following['user_name'],
                         'profile_picture' => $user_following['profile_picture'],
-                        'is_following' => $is_following
+                        'is_following' => $is_following,
+                        'is_user_self' => $is_user_self
                     ];
 
                     array_push($user_is_following_output, $following_user);
