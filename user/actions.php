@@ -33,6 +33,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                 array_push($logged_in_user_following, intval($user['user_id']));
 
+                sort($logged_in_user_following);
+
                 sql_update(
                     'users',
                     [
@@ -49,18 +51,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'csrf_error');
                 }
 
-                $current_user = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                $logged_in_user = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                $logged_in_user_following = json_decode($logged_in_user['following']);
 
-                $following = json_decode($current_user['following']);
-
-                if (!in_array($user['user_id'], $following)) {
+                if (!in_array($user['user_id'], $logged_in_user_following)) {
                     response(false, 'user_not_following');
                 }
 
-                if (($key = array_search($user['id'], $following)) !== false) {
-                    unset($following[$key]);
+                if (($key = array_search($user['user_id'], $logged_in_user_following)) !== false) {
+                    unset($logged_in_user_following[$key]);
                 }
 
+                sort($logged_in_user_following);
 
                 sql_update(
                     'users',
