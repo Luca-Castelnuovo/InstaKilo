@@ -7,6 +7,7 @@ loggedin();
 
 $user_name = clean_data($_REQUEST['user_name']);
 
+$logged_in_user = sql_select('users', 'following', "user_name='{$user_name}'", true);
 $user = sql_select('users', 'user_id,profile_picture,bio,following', "user_name='{$user_name}'", true);
 
 if (empty($user['user_id'])) {
@@ -34,12 +35,21 @@ page_header($user_name);
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
-                            <?php if ($_SESSION['id'] != $user['user_id']) {
-    ?>
-                            <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
                             <?php
-}
-            ?>
+
+                                if ($_SESSION['id'] != $user['user_id']) {
+                                    if (in_array($user['user_id'], $current_user['following'])) {
+                                        echo <<<HTML
+                                        <a onclick="user_undo_follow('{$user_name}')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text tooltipped" data-position="bottom" data-tooltip="Unfollow">Following</a>
+HTML;
+                                    } else {
+                                        echo <<<HTML
+                                        <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12 black-text">Follow</a>
+HTML;
+                                    }
+                                }
+
+                            ?>
                         </div>
                     </div>
                     <div class="row">
@@ -51,14 +61,14 @@ page_header($user_name);
                         </div>
                     </div>
                     <?php if (!empty($user['bio'])) {
-                ?>
+                                ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
                     <?php
-            } ?>
+                            } ?>
                 </div>
             </div>
         </div>
@@ -77,12 +87,21 @@ page_header($user_name);
                             <div class="row">
                                 <div class="col s12">
                                     <h2><?= $user_name ?></h2>
-                                    <?php if ($_SESSION['id'] != $user['user_id']) {
-                ?>
-                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
                                     <?php
-            }
-                    ?>
+
+                                        if ($_SESSION['id'] != $user['user_id']) {
+                                            if (in_array($user['user_id'], $current_user['following'])) {
+                                                echo <<<HTML
+                                                <a onclick="user_undo_follow('{$user_name}')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text tooltipped" data-position="bottom" data-tooltip="Unfollow">Following</a>
+HTML;
+                                            } else {
+                                                echo <<<HTML
+                                                <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12 black-text">Follow</a>
+HTML;
+                                            }
+                                        }
+
+                                    ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -96,14 +115,14 @@ page_header($user_name);
                         </div>
                     </div>
                     <?php if (!empty($user['bio'])) {
-                        ?>
+                                        ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
                     <?php
-                    } ?>
+                                    } ?>
                 </div>
             </div>
         </div>
