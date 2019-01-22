@@ -15,8 +15,11 @@ page_header('Home');
 </div>
 <div class="row" data-sticky-container>
     <div class="col s12 l7">
-        <div class="row">
+        <div class="row mb-0">
             <div class="row" id="post_container"></div>
+        </div>
+        <div class="row center">
+            <button id="loadBtn" class="btn-large waves-effect waves-light blue accent-4">Load more</button>
         </div>
     </div>
     <div class="col l1"></div>
@@ -52,7 +55,29 @@ $extra = <<<HTML
         GETrequest(`https://instakilo.lucacastelnuovo.nl/messages/actions`, function(response) {
             document.querySelector('#messages_container').innerHTML = feed_render_messages(response);
         });
-    });
+
+        var range = 10;
+        document.querySelector('#loadBtn').addEventListener('scroll', function() {
+            GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=${range}`, function(response) {
+                range += 10;
+                var new_posts = feed_render_posts(response, true);
+                 if (new_posts !== false) {
+                    post_container.innerHTML += new_posts;
+                    materialize_init();
+                    render_hashtags();
+                } else {
+                    post_container.innerHTML += `
+                        <div class="col s12">
+                            <div class="card-panel">
+                                <p>End of posts</p>
+                            </div>
+                        </div>
+                    `;
+
+                    document.querySelector('#loadBtn').classList.add('hidden');
+                }
+            });
+        });
 </script>
 HTML;
 
