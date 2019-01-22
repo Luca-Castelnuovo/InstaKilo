@@ -10,7 +10,7 @@ page_header('Users');
     <div class="col s12">
         <?php
 
-            $users = sql_query('users', 'user_name,profile_picture', 'true', false);
+            $users = sql_select('users', 'user_name,profile_picture', 'true', false);
 
             while ($user = $users->fetch_assoc()) {
                 echo <<<END
