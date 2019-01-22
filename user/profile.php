@@ -31,17 +31,17 @@ page_header($user_name);
                             <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'" class="circle" width="200">
                         </div>
                     </div>
-                    <?php if ($_SESSION['id'] == $user['user_id']) {
-    ?>
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
+                            <?php if ($_SESSION['id'] == $user['user_id']) {
+    ?>
                             <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
+                            <?php
+}
+            ?>
                         </div>
                     </div>
-                <?php
-}
-?>
                     <div class="row">
                         <div class="col s6">
                             <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
@@ -51,14 +51,14 @@ page_header($user_name);
                         </div>
                     </div>
                     <?php if (!empty($user['bio'])) {
-    ?>
+                ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
                     <?php
-} ?>
+            } ?>
                 </div>
             </div>
         </div>
@@ -74,16 +74,17 @@ page_header($user_name);
                             <img src="<?= $user['profile_picture'] ?>" onerror="this.src='https://cdn.lucacastelnuovo.nl/general/images/profile_picture.png'" class="circle" width="200">
                         </div>
                         <div class="col s7">
-                            <?php if ($_SESSION['id'] == $user['user_id']) {
-        ?>
                             <div class="row">
                                 <div class="col s12">
                                     <h2><?= $user_name ?></h2>
-                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn tooltipped grey lighten-5 col s12 black-text" data-position="left" data-tooltip="Unfollow">Following</a>
+                                    <?php if ($_SESSION['id'] == $user['user_id']) {
+                ?>
+                                    <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
+                                    <?php
+            }
+                    ?>
                                 </div>
                             </div>
-                        <?php
-    }?>
                             <div class="row">
                                 <div class="col s6">
                                     <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
@@ -95,14 +96,14 @@ page_header($user_name);
                         </div>
                     </div>
                     <?php if (!empty($user['bio'])) {
-        ?>
+                        ?>
                     <div class="row">
                         <div class="col s12">
                             <p><?= $user['bio'] ?></p>
                         </div>
                     </div>
                     <?php
-    } ?>
+                    } ?>
                 </div>
             </div>
         </div>
