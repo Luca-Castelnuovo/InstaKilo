@@ -44,9 +44,13 @@ page_header($user_name);
 HTML;
                                     } else {
                                         echo <<<HTML
-                                        <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12 black-text">Follow</a>
+                                        <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12">Follow</a>
 HTML;
                                     }
+                                } else {
+                                    echo <<<HTML
+                                    <a href="/user/settings" class="waves-effect waves-light btn blue accent-4 col s12">Settings</a>
+HTML;
                                 }
 
                             ?>
@@ -96,9 +100,13 @@ HTML;
 HTML;
                                             } else {
                                                 echo <<<HTML
-                                                <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12 black-text">Follow</a>
+                                                <a onclick="user_follow('{$user_name}')" class="waves-effect waves-light btn blue accent-4 col s12">Follow</a>
 HTML;
                                             }
+                                        } else {
+                                            echo <<<HTML
+                                            <a href="/user/settings" class="waves-effect waves-light btn blue accent-4 col s12">Settings</a>
+HTML;
                                         }
 
                                     ?>
