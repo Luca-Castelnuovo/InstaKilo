@@ -13,14 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $user_is_following[] = "{$_SESSION['id']}";
                 $user_is_following_sql = implode(',', array_map('intval', $user_is_following));
 
-                if (isset($_GET['range'])) {
-                    $range = clean_data($_GET['range']);
-                    $limit = "LIMIT 5 OFFSET {$range}";
-                } else {
-                    $limit = "LIMIT 10";
-                }
-
-                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created,user_id', "`user_id` IN ({$user_is_following_sql}) ORDER BY created DESC  {$limit}", false);
+                $posts = sql_select('posts', 'id,img_url,caption,allow_comments,comments,likes,liked_by,created,user_id', "`user_id` IN ({$user_is_following_sql}) ORDER BY created DESC", false);
 
                 if ($posts->num_rows != 0) {
                     $posts_item = [];
