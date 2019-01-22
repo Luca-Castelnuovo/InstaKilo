@@ -7,8 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     reponse(false, 'invalid_method');
 }
 
-$client_id = '915e78412a5b707';
-
 $mimetype = mime_content_type($_FILES['post_img']['tmp_name']);
 $allowed_mime_types = [
     'image/png',
