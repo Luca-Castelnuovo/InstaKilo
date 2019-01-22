@@ -48,7 +48,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 );
 
                 response(true, 'followed');
-                break;
+                exit;
 
             case 'undo_follow':
                 if (!csrf_val($_GET['CSRFtoken'], 'override')) {
@@ -111,7 +111,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 // }
                 //
                 // response(true, '', ['followers' => $all_followers]);
-                break;
+                exit;
 
             case 'following':
                 $user_is_following = json_decode($user['following']);
@@ -138,7 +138,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
 
                 response(true, '', ['following' => $user_is_following_output, 'following_number' => count($user_is_following)]);
-                break;
+                exit;
 
             case 'feed':
                 $post_owner = sql_select('users', 'user_id', "user_name='{$username}'", true);
@@ -174,9 +174,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
 
                     response(true, '', ['posts' => $posts_item]);
-                    break;
+                } else {
+                    response(false, 'no_posts');
                 }
-    exit;
+
+            exit;
 
     default:
         response(false, 'incorrect_method');
