@@ -4,17 +4,16 @@ function page_header($title = 'Unknown')
 {
     echo <<<HTML
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
 
     <head>
         <!-- Config -->
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <link rel="manifest" href="/site.webmanifest"></link>
+        <link rel="manifest" href="/manifest.json"></link>
         <title>{$title}</title>
 
         <!-- SEO -->
-        <link href="https://instakilo.lucacastelnuovo.nl" rel="canonical">
         <meta content="A system to store and access all my logs" name="description">
 
         <!-- Icons -->
