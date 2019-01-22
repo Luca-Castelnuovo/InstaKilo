@@ -31,6 +31,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     response(false, 'user_already_following');
                 }
 
+                if ($user['user_id'] == $_SESSION['id']) {
+                    response(false, 'cant_follow_yourself');
+                }
+
                 array_push($logged_in_user_following, intval($user['user_id']));
 
                 sort($logged_in_user_following);
