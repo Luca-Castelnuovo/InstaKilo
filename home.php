@@ -70,7 +70,7 @@ $extra = <<<HTML
                     document.querySelector('#post_container').innerHTML += `
                         <div class="col s12">
                             <div class="card-panel">
-                                <p>End of posts</p>
+                                <h4>End of posts</h4>
                             </div>
                         </div>
                     `;
