@@ -58,7 +58,7 @@ HTML;
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
+                            <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
                         </div>
                         <div class="col s6">
                             <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="following_number"><?= $following_count ?></span> following</a>
@@ -114,7 +114,7 @@ HTML;
                             </div>
                             <div class="row">
                                 <div class="col s6">
-                                    <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12 disabled"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
+                                    <a onclick="user_followers('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="followers_number"><?= $followers_count ?></span> followers</a>
                                 </div>
                                 <div class="col s6">
                                     <a onclick="user_following('<?= $user_name ?>')" class="accent-4 blue btn-small pointer waves-effect waves-light col s12"><span class="bold" id="following_number"><?= $following_count ?></span> following</a>

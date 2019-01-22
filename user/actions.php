@@ -80,37 +80,45 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 break;
 
             case 'followers':
-                // //Get followers
-                // $user = sql_select('users', 'following', "user_name='{$user_name}'", true);
-                // $followers = json_decode($user['following']);
-                // // End Get Followers
-                //
-                //
-                // $user_visiting = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
-                // $user_followers = json_decode($user_visiting['following']);
-                //
-                // $all_followers = [];
-                //
-                // foreach ($followers as $follower) {
-                //     $user_follower = sql_select('users', 'user_name,profile_picture', "user_id='{$follower}'", true);
-                //
-                //     if (in_array($user_followers, $follower)) {
-                //         $is_following = true;
-                //     } else {
-                //         $is_following = false;
-                //     }
-                //
-                //
-                //     $follower_user = [
-                //         'username' => $user_follower['user_name'],
-                //         'profile_picture' => $user_follower['profile_picture'],
-                //         'is_following' => $is_following
-                //     ];
-                //
-                //     array_push($all_followers, $follower_user);
-                // }
-                //
-                // response(true, '', ['followers' => $all_followers]);
+                $user_is_following_sql = sql_select(
+                    'users',
+                    'user_id',
+                    "following
+                        LIKE '%,{$user['user_id']},%'
+                        OR following LIKE '%[{$user['user_id']},%'
+                        OR following LIKE '%,{$user['user_id']}]%'
+                        OR following LIKE '%[{$user['user_id']}]%'
+                    ",
+                    false
+                );
+
+                $user_is_following = [];
+                while ($user_following = $user_is_following_sql->fetch_assoc()) {
+                    array_push($user_is_following, $user_following['user_id']);
+                }
+
+                $visitor = sql_select('users', 'following', "user_id='{$_SESSION['id']}'", true);
+                $visitor_followings = json_decode($visitor['following']);
+
+                $user_is_following_output = [];
+
+                foreach ($user_is_following as $following) {
+                    $is_following = in_array($following, $visitor_followings) ? true : false;
+                    $is_user_self = ($_SESSION['id'] == $following) ? true : false;
+
+                    $user_following = sql_select('users', 'user_name,profile_picture', "user_id='{$following}'", true);
+
+                    $following_user = [
+                        'username' => $user_following['user_name'],
+                        'profile_picture' => $user_following['profile_picture'],
+                        'is_following' => $is_following,
+                        'is_user_self' => $is_user_self
+                    ];
+
+                    array_push($user_is_following_output, $following_user);
+                }
+
+                response(true, '', ['followers' => $user_is_following_output, 'follower_number' => count($user_is_following)]);
                 exit;
 
             case 'following':
