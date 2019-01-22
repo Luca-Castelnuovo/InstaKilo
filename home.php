@@ -76,6 +76,8 @@ $extra = <<<HTML
                     `;
 
                     document.querySelector('#loadBtn').classList.add('hidden');
+
+                    materialize_init();
                 }
             });
         });
