@@ -34,7 +34,7 @@ page_header($user_name);
                     <div class="row">
                         <div class="col s12">
                             <h2 class="mt-0"><?= $user_name ?></h2>
-                            <?php if ($_SESSION['id'] == $user['user_id']) {
+                            <?php if ($_SESSION['id'] != $user['user_id']) {
     ?>
                             <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
                             <?php
@@ -77,7 +77,7 @@ page_header($user_name);
                             <div class="row">
                                 <div class="col s12">
                                     <h2><?= $user_name ?></h2>
-                                    <?php if ($_SESSION['id'] == $user['user_id']) {
+                                    <?php if ($_SESSION['id'] != $user['user_id']) {
                 ?>
                                     <a onclick="user_follow('<?= $user_name ?>')" class="waves-effect waves-light btn grey lighten-5 col s12 black-text" data-position="bottom" data-tooltip="Unfollow">Following</a>
                                     <?php
