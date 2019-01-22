@@ -61,7 +61,7 @@ $extra = <<<HTML
 
         document.querySelector('#loadBtn').addEventListener('click', function() {
             console.log(range_posts);
-            GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=10`, function(response) {
+            GETrequest(`https://instakilo.lucacastelnuovo.nl/posts/actions/feed&range=${range_posts}`, function(response) {
                 range_posts += 5;
                 var new_posts = feed_render_posts(response, true);
                  if (new_posts !== false) {
