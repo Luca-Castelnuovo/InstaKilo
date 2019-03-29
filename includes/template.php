@@ -22,6 +22,9 @@ function page_header($title = 'Unknown')
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/general/css/materialize.css" />
         <link rel="stylesheet" href="https://cdn.lucacastelnuovo.nl/instakilo.lucacastelnuovo.nl/css/style.12.css" />
+
+        <!-- Analytics -->
+        <script src="https://cdn.lucacastelnuovo.nl/tracking/9"></script>
     </head>
 
     <body>
