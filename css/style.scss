@@ -1,0 +1,96 @@
+$color_primary: #2962ff;
+$color_error: #f44336;
+
+.input-field {
+    input:focus {
+        border-bottom: 1px solid $color_primary !important;
+        box-shadow: 0 1px 0 0 $color_primary !important;
+
+        + label {
+            color: $color_primary !important;
+        }
+    }
+
+    textarea:focus + label {
+        color: $color_primary !important;
+    }
+}
+
+.row .input-field textarea {
+    &:focus {
+        border-bottom: 1px solid $color_primary;
+        box-shadow: 0 1px 0 0 $color_primary;
+    }
+
+    &.invalid {
+        border-bottom: 1px solid $color_error;
+        box-shadow: 0 1px 0 0 $color_error;
+    }
+}
+
+.collection .collection-item.avatar {
+    min-height: 0;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+    border: 2px solid #2962ff !important;
+    background-color: #2962ff !important;
+}
+
+.card.small .card-image {
+    max-height: 75% !important;
+}
+
+.blue-icon {
+    color: $color_primary;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mr-6 {
+    margin-right: 6px !important;
+}
+
+.material-icons {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.tt-none {
+    text-transform: none !important;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.likes {
+    font-size: 18px;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.comment_container .comment_delete_btn {
+    visibility: hidden;
+}
+
+.comment_container:hover .comment_delete_btn {
+    visibility: visible;
+}
+
+.hash_tag {
+    font-weight: bolder;
+}
