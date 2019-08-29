@@ -11,10 +11,6 @@ require $_SERVER['DOCUMENT_ROOT'] . '/includes/security.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/sql.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/includes/template.php';
 
-// External
-require '/var/www/logs.lucacastelnuovo.nl/logs.php';
-// log_action('7', 'service.test', $_SERVER["REMOTE_ADDR"], 'USER_ID');
-
 $provider = new OAuth([
     'clientID'                => $GLOBALS['config']->client->id,
     'clientSecret'            => $GLOBALS['config']->client->secret,
